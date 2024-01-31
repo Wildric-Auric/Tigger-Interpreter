@@ -59,7 +59,8 @@ public class TigListener implements TiggrammarListener {
 
 	@Override
 	public void exitBinary(TiggrammarParser.BinaryContext ctx) {
-    // fixme: fill here
+		// NEW : Create operations with 2 operands
+		ctx.node = factory.newBinaryOperation(ctx.op.getText(), ctx.arg1.node, ctx.arg2.node);
 	}
 
 	@Override	public void enterEveryRule(ParserRuleContext arg0) {}

@@ -28,13 +28,26 @@ public class ASTbinaryOperation extends ASTexpression {
     return rightOperand;
   }
 
-  public String toString(){
-    // fixme: fill here
-    return null;
+  public String toString() {
+    // NEW  : Returns string for display
+    return String.format("%s %s %s", leftOperand.toString(), operator, rightOperand.toString());
   }
 
-  public Object eval(){
-    // fixme: fill here
+  public Object eval() {
+    // NEW : Process the operation, by evaluating both operand then if they are 
+    Object op1 = leftOperand.eval();
+    Object op2 = rightOperand.eval();
+    if (op1 instanceof BigInteger && op2 instanceof BigInteger){
+      BigInteger b1 = (BigInteger) op1;
+      BigInteger b2 = (BigInteger) op2;
+      switch (operator){
+      case "+" : return b1.add(b2);
+      case "-" : return b1.subtract(b2);
+      case "*" : return b1.multiply(b2);
+      case "/" : return b1.divide(b2);
+      case "%" : return b1.mod(b2);
+      };
+    }
     return null;
   }
 }
