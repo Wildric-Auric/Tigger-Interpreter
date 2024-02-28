@@ -19,8 +19,8 @@ public class TiggrammarParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, INT=6, LINE_COMMENT=7, COMMENT=8, 
-		SPACE=9;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		T__9=10, INT=11, LINE_COMMENT=12, COMMENT=13, SPACE=14;
 	public static final int
 		RULE_prog = 0, RULE_expr = 1;
 	private static String[] makeRuleNames() {
@@ -32,14 +32,15 @@ public class TiggrammarParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'-'", "'*'", "'/'", "'%'", "'+'"
+			null, "'-'", "'='", "'>'", "'>='", "'<'", "'<='", "'*'", "'/'", "'%'", 
+			"'+'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, "INT", "LINE_COMMENT", "COMMENT", 
-			"SPACE"
+			null, null, null, null, null, null, null, null, null, null, null, "INT", 
+			"LINE_COMMENT", "COMMENT", "SPACE"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -233,7 +234,7 @@ public class TiggrammarParser extends Parser {
 				setState(8);
 				((UnaryContext)_localctx).op = match(T__0);
 				setState(9);
-				((UnaryContext)_localctx).arg = expr(4);
+				((UnaryContext)_localctx).arg = expr(5);
 				}
 				break;
 			case INT:
@@ -249,7 +250,7 @@ public class TiggrammarParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(21);
+			setState(24);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -257,7 +258,7 @@ public class TiggrammarParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(19);
+					setState(22);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 					case 1:
@@ -266,11 +267,11 @@ public class TiggrammarParser extends Parser {
 						((BinaryContext)_localctx).arg1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(13);
-						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
 						setState(14);
 						((BinaryContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 28L) != 0)) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 124L) != 0)) ) {
 							((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -279,7 +280,7 @@ public class TiggrammarParser extends Parser {
 							consume();
 						}
 						setState(15);
-						((BinaryContext)_localctx).arg2 = expr(4);
+						((BinaryContext)_localctx).arg2 = expr(5);
 						}
 						break;
 					case 2:
@@ -288,11 +289,11 @@ public class TiggrammarParser extends Parser {
 						((BinaryContext)_localctx).arg1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(16);
-						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(17);
 						((BinaryContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !(_la==T__0 || _la==T__4) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 896L) != 0)) ) {
 							((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -301,13 +302,35 @@ public class TiggrammarParser extends Parser {
 							consume();
 						}
 						setState(18);
+						((BinaryContext)_localctx).arg2 = expr(4);
+						}
+						break;
+					case 3:
+						{
+						_localctx = new BinaryContext(new ExprContext(_parentctx, _parentState));
+						((BinaryContext)_localctx).arg1 = _prevctx;
+						pushNewRecursionContext(_localctx, _startState, RULE_expr);
+						setState(19);
+						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
+						setState(20);
+						((BinaryContext)_localctx).op = _input.LT(1);
+						_la = _input.LA(1);
+						if ( !(_la==T__0 || _la==T__9) ) {
+							((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						}
+						else {
+							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+							_errHandler.reportMatch(this);
+							consume();
+						}
+						setState(21);
 						((BinaryContext)_localctx).arg2 = expr(3);
 						}
 						break;
 					}
 					} 
 				}
-				setState(23);
+				setState(26);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			}
@@ -334,33 +357,37 @@ public class TiggrammarParser extends Parser {
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 3);
+			return precpred(_ctx, 4);
 		case 1:
+			return precpred(_ctx, 3);
+		case 2:
 			return precpred(_ctx, 2);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\t\u0019\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0001"+
-		"\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0003\u0001\f\b\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0005\u0001\u0014\b\u0001\n\u0001\f\u0001"+
-		"\u0017\t\u0001\u0001\u0001\u0000\u0001\u0002\u0002\u0000\u0002\u0000\u0002"+
-		"\u0001\u0000\u0002\u0004\u0002\u0000\u0001\u0001\u0005\u0005\u0019\u0000"+
-		"\u0004\u0001\u0000\u0000\u0000\u0002\u000b\u0001\u0000\u0000\u0000\u0004"+
-		"\u0005\u0003\u0002\u0001\u0000\u0005\u0006\u0005\u0000\u0000\u0001\u0006"+
-		"\u0001\u0001\u0000\u0000\u0000\u0007\b\u0006\u0001\uffff\uffff\u0000\b"+
-		"\t\u0005\u0001\u0000\u0000\t\f\u0003\u0002\u0001\u0004\n\f\u0005\u0006"+
-		"\u0000\u0000\u000b\u0007\u0001\u0000\u0000\u0000\u000b\n\u0001\u0000\u0000"+
-		"\u0000\f\u0015\u0001\u0000\u0000\u0000\r\u000e\n\u0003\u0000\u0000\u000e"+
-		"\u000f\u0007\u0000\u0000\u0000\u000f\u0014\u0003\u0002\u0001\u0004\u0010"+
-		"\u0011\n\u0002\u0000\u0000\u0011\u0012\u0007\u0001\u0000\u0000\u0012\u0014"+
-		"\u0003\u0002\u0001\u0003\u0013\r\u0001\u0000\u0000\u0000\u0013\u0010\u0001"+
-		"\u0000\u0000\u0000\u0014\u0017\u0001\u0000\u0000\u0000\u0015\u0013\u0001"+
-		"\u0000\u0000\u0000\u0015\u0016\u0001\u0000\u0000\u0000\u0016\u0003\u0001"+
-		"\u0000\u0000\u0000\u0017\u0015\u0001\u0000\u0000\u0000\u0003\u000b\u0013"+
-		"\u0015";
+		"\u0004\u0001\u000e\u001c\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0003\u0001\f\b\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0005\u0001\u0017\b\u0001\n\u0001\f\u0001\u001a\t\u0001\u0001\u0001\u0000"+
+		"\u0001\u0002\u0002\u0000\u0002\u0000\u0003\u0001\u0000\u0002\u0006\u0001"+
+		"\u0000\u0007\t\u0002\u0000\u0001\u0001\n\n\u001d\u0000\u0004\u0001\u0000"+
+		"\u0000\u0000\u0002\u000b\u0001\u0000\u0000\u0000\u0004\u0005\u0003\u0002"+
+		"\u0001\u0000\u0005\u0006\u0005\u0000\u0000\u0001\u0006\u0001\u0001\u0000"+
+		"\u0000\u0000\u0007\b\u0006\u0001\uffff\uffff\u0000\b\t\u0005\u0001\u0000"+
+		"\u0000\t\f\u0003\u0002\u0001\u0005\n\f\u0005\u000b\u0000\u0000\u000b\u0007"+
+		"\u0001\u0000\u0000\u0000\u000b\n\u0001\u0000\u0000\u0000\f\u0018\u0001"+
+		"\u0000\u0000\u0000\r\u000e\n\u0004\u0000\u0000\u000e\u000f\u0007\u0000"+
+		"\u0000\u0000\u000f\u0017\u0003\u0002\u0001\u0005\u0010\u0011\n\u0003\u0000"+
+		"\u0000\u0011\u0012\u0007\u0001\u0000\u0000\u0012\u0017\u0003\u0002\u0001"+
+		"\u0004\u0013\u0014\n\u0002\u0000\u0000\u0014\u0015\u0007\u0002\u0000\u0000"+
+		"\u0015\u0017\u0003\u0002\u0001\u0003\u0016\r\u0001\u0000\u0000\u0000\u0016"+
+		"\u0010\u0001\u0000\u0000\u0000\u0016\u0013\u0001\u0000\u0000\u0000\u0017"+
+		"\u001a\u0001\u0000\u0000\u0000\u0018\u0016\u0001\u0000\u0000\u0000\u0018"+
+		"\u0019\u0001\u0000\u0000\u0000\u0019\u0003\u0001\u0000\u0000\u0000\u001a"+
+		"\u0018\u0001\u0000\u0000\u0000\u0003\u000b\u0016\u0018";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
