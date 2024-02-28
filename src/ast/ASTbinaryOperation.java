@@ -46,7 +46,8 @@ public class ASTbinaryOperation extends ASTexpression {
       case "*" : return b1.multiply(b2);
       case "/" : return b1.divide(b2);
       case "%" : return b1.mod(b2);
-      case "=" : return b1.compareTo(b2) == 0;
+      case "==" : return b1.compareTo(b2) == 0;
+      case "!=" : return b1.compareTo(b2) != 0;
       case ">" : return b1.compareTo(b2) == 1;
       case ">=" : return b1.compareTo(b2) == 1 || b1.compareTo(b2) == 0;
       case "<" : return b1.compareTo(b2) == -1;
