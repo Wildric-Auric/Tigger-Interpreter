@@ -29,6 +29,7 @@ public class ASTunaryOperation extends ASTexpression {
       BigInteger b = (BigInteger) op;
       switch (operator){
       case "-" : return BigInteger.ZERO.subtract(b);
+      case "+" : return b;
       };
     }
     return null;

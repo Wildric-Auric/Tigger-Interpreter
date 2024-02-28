@@ -18,6 +18,7 @@ public class ASTfactory {
 	public ASTinteger newIntegerConstant(String value) {
     return new ASTinteger(value);
   }
+  public ASTifthenelse newIfThenElse(){}
 
   public ASTgroupedExpression newGroupedExpression(ASTexpression expr) {
     return new ASTgroupedExpression(expr);
