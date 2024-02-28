@@ -62,6 +62,18 @@ public class TiggrammarBaseListener implements TiggrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUnary(TiggrammarParser.UnaryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGroupedExpr(TiggrammarParser.GroupedExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGroupedExpr(TiggrammarParser.GroupedExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

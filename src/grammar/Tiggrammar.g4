@@ -12,6 +12,7 @@ prog returns [ast.ASTprogram node]
 // Expressions enrichies
 expr returns [ast.ASTexpression node]
     : op='-' arg=expr # Unary
+    | p1='(' arg=expr p2=')' # GroupedExpr
     | arg1=expr op=('==' | '!=' | '>' | '>=' | '<' | '<=') arg2=expr # Binary
     | arg1=expr op=('*' | '/' | '%') arg2=expr # Binary
     | arg1=expr op=('+' | '-') arg2=expr # Binary

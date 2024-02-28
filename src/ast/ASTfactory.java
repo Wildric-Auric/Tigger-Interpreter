@@ -19,4 +19,8 @@ public class ASTfactory {
     return new ASTinteger(value);
   }
 
+  public ASTgroupedExpression newGroupedExpression(ASTexpression expr) {
+    return new ASTgroupedExpression(expr);
+  }
+
 }

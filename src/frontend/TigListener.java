@@ -63,6 +63,11 @@ public class TigListener implements TiggrammarListener {
 		ctx.node = factory.newBinaryOperation(ctx.op.getText(), ctx.arg1.node, ctx.arg2.node);
 	}
 
+	@Override
+	public void exitGroupedExpr(TiggrammarParser.GroupedExprContext ctx) {
+		ctx.node = factory.newGroupedExpression(ctx.arg.node);
+	}
+
 	@Override	public void enterEveryRule(ParserRuleContext arg0) {}
 	@Override	public void exitEveryRule(ParserRuleContext arg0) {}
 	@Override	public void visitErrorNode(ErrorNode arg0) {}
@@ -71,4 +76,6 @@ public class TigListener implements TiggrammarListener {
 	@Override	public void enterConstInteger(TiggrammarParser.ConstIntegerContext ctx) {}
 	@Override	public void enterBinary(TiggrammarParser.BinaryContext ctx) {}
 	@Override	public void enterUnary(TiggrammarParser.UnaryContext ctx) {}
+	// New :
+	@Override	public void enterGroupedExpr(TiggrammarParser.GroupedExprContext ctx) {}
 }

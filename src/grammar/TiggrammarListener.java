@@ -55,4 +55,16 @@ public interface TiggrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUnary(TiggrammarParser.UnaryContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code GroupedExpr}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterGroupedExpr(TiggrammarParser.GroupedExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GroupedExpr}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitGroupedExpr(TiggrammarParser.GroupedExprContext ctx);
 }
