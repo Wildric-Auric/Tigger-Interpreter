@@ -60,7 +60,7 @@ argument, et l'affiche sur stdout.
     print_int(1+2*3)
     => 7
 
-A se stade, l'exécution d'un programme consiste en l'affichage du source
+A ce stade, l'exécution d'un programme consiste en l'affichage du source
 (pretty_print), puis l'affichage du résultat (eval).
 
 Ne cherchez pas à faire une calculatrice interactive, faites un
