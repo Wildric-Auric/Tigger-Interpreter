@@ -34,7 +34,7 @@ public class ASTbinaryOperation extends ASTexpression {
   }
 
   public Object eval() {
-    // NEW : Process the operation, by evaluating both operand then if they are 
+    // NEW : Process the operation, by evaluating both operand
     Object op1 = leftOperand.eval();
     Object op2 = rightOperand.eval();
     if (op1 instanceof BigInteger && op2 instanceof BigInteger){
@@ -46,6 +46,12 @@ public class ASTbinaryOperation extends ASTexpression {
       case "*" : return b1.multiply(b2);
       case "/" : return b1.divide(b2);
       case "%" : return b1.mod(b2);
+      case "==" : return b1.compareTo(b2) == 0;
+      case "!=" : return b1.compareTo(b2) != 0;
+      case ">" : return b1.compareTo(b2) == 1;
+      case ">=" : return b1.compareTo(b2) == 1 || b1.compareTo(b2) == 0;
+      case "<" : return b1.compareTo(b2) == -1;
+      case "<=" : return b1.compareTo(b2) == -1 || b1.compareTo(b2) == 0;
       };
     }
     return null;
