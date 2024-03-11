@@ -43,6 +43,18 @@ public class TiggrammarBaseListener implements TiggrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterConstBool(TiggrammarParser.ConstBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstBool(TiggrammarParser.ConstBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBinary(TiggrammarParser.BinaryContext ctx) { }
 	/**
 	 * {@inheritDoc}

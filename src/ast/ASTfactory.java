@@ -18,10 +18,19 @@ public class ASTfactory {
 	public ASTinteger newIntegerConstant(String value) {
     return new ASTinteger(value);
   }
-  public ASTifthenelse newIfThenElse(){}
+
+  // New :
+
+  public ASTcondition newCondition() {
+    return null;
+  }
 
   public ASTgroupedExpression newGroupedExpression(ASTexpression expr) {
     return new ASTgroupedExpression(expr);
+  }
+
+  public ASTbool newBoolConstant(String value) {
+    return new ASTbool(value);
   }
 
 }

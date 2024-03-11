@@ -32,6 +32,18 @@ public interface TiggrammarListener extends ParseTreeListener {
 	 */
 	void exitConstInteger(TiggrammarParser.ConstIntegerContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code ConstBool}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstBool(TiggrammarParser.ConstBoolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ConstBool}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstBool(TiggrammarParser.ConstBoolContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Binary}
 	 * labeled alternative in {@link TiggrammarParser#expr}.
 	 * @param ctx the parse tree

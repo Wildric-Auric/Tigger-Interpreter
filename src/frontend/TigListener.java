@@ -45,7 +45,6 @@ public class TigListener implements TiggrammarListener {
 		ctx.node = factory.newProgram(ctx.body.node);
 	}
 
-
 	@Override
 	public void	exitConstInteger(
 			TiggrammarParser.ConstIntegerContext ctx) {
@@ -68,6 +67,11 @@ public class TigListener implements TiggrammarListener {
 		ctx.node = factory.newGroupedExpression(ctx.arg.node);
 	}
 
+	@Override
+	public void exitConstBool(TiggrammarParser.ConstBoolContext ctx) {
+		ctx.node = factory.newBoolConstant(ctx.boolConst.getText());
+	}
+
 	@Override	public void enterEveryRule(ParserRuleContext arg0) {}
 	@Override	public void exitEveryRule(ParserRuleContext arg0) {}
 	@Override	public void visitErrorNode(ErrorNode arg0) {}
@@ -78,4 +82,5 @@ public class TigListener implements TiggrammarListener {
 	@Override	public void enterUnary(TiggrammarParser.UnaryContext ctx) {}
 	// New :
 	@Override	public void enterGroupedExpr(TiggrammarParser.GroupedExprContext ctx) {}
+	@Override	public void enterConstBool(TiggrammarParser.ConstBoolContext ctx) {}
 }
