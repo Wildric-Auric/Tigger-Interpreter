@@ -13,7 +13,7 @@ public class ASTsequence extends ASTexpression {
   }
 
   public String toString() {
-    return expr.toString() + ";";
+    return expr.toString();
   }
 
   public Object eval() {

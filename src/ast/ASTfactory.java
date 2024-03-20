@@ -34,7 +34,7 @@ public class ASTfactory {
   }
   
    public ASTprint newPrint(ASTexpression expr) {
-    return null;
+    return new ASTprint(expr);
   }
 
   public ASTsequence newSequence(ASTexpression expr) {
