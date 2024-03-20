@@ -72,6 +72,11 @@ public class TigListener implements TiggrammarListener {
 	}
 
 	@Override
+	public void exitPrint(TiggrammarParser.PrintContext ctx) {
+		ctx.node = factory.newPrint(ctx.arg.node);
+	}
+
+	@Override
 	public void exitSequence(TiggrammarParser.SequenceContext ctx) {
 		ctx.node = factory.newSequence(ctx.arg.node);
 	}
@@ -87,6 +92,7 @@ public class TigListener implements TiggrammarListener {
 	// New :
 	@Override	public void enterGroupedExpr(TiggrammarParser.GroupedExprContext ctx) {}
 	@Override	public void enterConstBool(TiggrammarParser.ConstBoolContext ctx) {}
-	@Override	public void enterSequence(TiggrammarParser.SequenceContext ctx) {}
 
+	@Override	public void enterPrint(TiggrammarParser.PrintContext ctx) {}
+	@Override	public void enterSequence(TiggrammarParser.SequenceContext ctx) {}
 }

@@ -19,6 +19,7 @@ expr returns [ast.ASTexpression node]
     | arg1=expr op=('+' | '-') arg2=expr # Binary
     | intConst=INT # ConstInteger
     | boolConst=BOOL # ConstBool
+    | p1='print(' arg=expr p2=')' # Print
     ;
 
 /*
