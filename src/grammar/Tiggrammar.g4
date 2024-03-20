@@ -12,6 +12,7 @@ prog returns [ast.ASTprogram node]
 // Expressions enrichies
 expr returns [ast.ASTexpression node]
     : arg=expr ';' # Sequence
+    | '$' arg=expr # Print
     | op=('-' | '+') arg=expr # Unary
     | '(' arg=expr ')' # GroupedExpr
     | arg1=expr op=('==' | '!=' | '>' | '>=' | '<' | '<=') arg2=expr # Binary
@@ -19,7 +20,6 @@ expr returns [ast.ASTexpression node]
     | arg1=expr op=('+' | '-') arg2=expr # Binary
     | intConst=INT # ConstInteger
     | boolConst=BOOL # ConstBool
-    | p1='print(' arg=expr p2=')' # Print
     ;
 
 /*
@@ -33,6 +33,7 @@ expr returns [ast.ASTexpression node]
 // Constantes entières
 INT : [0-9]+ ;
 BOOL : 'true' | 'false' | 'T' | 'F' ;
+ID : [a-z] [a-zA-Z0-9_] ;
 
 // Commentaires
 LINE_COMMENT : '//' (~[\r\n])* -> skip;

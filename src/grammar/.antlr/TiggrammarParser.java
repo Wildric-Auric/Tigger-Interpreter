@@ -20,8 +20,8 @@ public class TiggrammarParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, INT=15, BOOL=16, LINE_COMMENT=17, 
-		COMMENT=18, SPACE=19;
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, INT=16, BOOL=17, 
+		ID=18, LINE_COMMENT=19, COMMENT=20, SPACE=21;
 	public static final int
 		RULE_prog = 0, RULE_expr = 1;
 	private static String[] makeRuleNames() {
@@ -33,15 +33,16 @@ public class TiggrammarParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "';'", "'-'", "'+'", "'('", "')'", "'=='", "'!='", "'>'", "'>='", 
-			"'<'", "'<='", "'*'", "'/'", "'%'"
+			null, "';'", "'$'", "'-'", "'+'", "'('", "')'", "'=='", "'!='", "'>'", 
+			"'>='", "'<'", "'<='", "'*'", "'/'", "'%'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, "INT", "BOOL", "LINE_COMMENT", "COMMENT", "SPACE"
+			null, null, null, null, "INT", "BOOL", "ID", "LINE_COMMENT", "COMMENT", 
+			"SPACE"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -147,6 +148,14 @@ public class TiggrammarParser extends Parser {
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
+	public static class PrintContext extends ExprContext {
+		public ExprContext arg;
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public PrintContext(ExprContext ctx) { copyFrom(ctx); }
+	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class ConstIntegerContext extends ExprContext {
 		public Token intConst;
 		public TerminalNode INT() { return getToken(TiggrammarParser.INT, 0); }
@@ -213,20 +222,31 @@ public class TiggrammarParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(16);
+			setState(18);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__1:
-			case T__2:
 				{
-				_localctx = new UnaryContext(_localctx);
+				_localctx = new PrintContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
 				setState(8);
+				match(T__1);
+				setState(9);
+				((PrintContext)_localctx).arg = expr(8);
+				}
+				break;
+			case T__2:
+			case T__3:
+				{
+				_localctx = new UnaryContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(10);
 				((UnaryContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
-				if ( !(_la==T__1 || _la==T__2) ) {
+				if ( !(_la==T__2 || _la==T__3) ) {
 					((UnaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 				}
 				else {
@@ -234,21 +254,21 @@ public class TiggrammarParser extends Parser {
 					_errHandler.reportMatch(this);
 					consume();
 				}
-				setState(9);
+				setState(11);
 				((UnaryContext)_localctx).arg = expr(7);
 				}
 				break;
-			case T__3:
+			case T__4:
 				{
 				_localctx = new GroupedExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(10);
-				match(T__3);
-				setState(11);
-				((GroupedExprContext)_localctx).arg = expr(0);
 				setState(12);
 				match(T__4);
+				setState(13);
+				((GroupedExprContext)_localctx).arg = expr(0);
+				setState(14);
+				match(T__5);
 				}
 				break;
 			case INT:
@@ -256,7 +276,7 @@ public class TiggrammarParser extends Parser {
 				_localctx = new ConstIntegerContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(14);
+				setState(16);
 				((ConstIntegerContext)_localctx).intConst = match(INT);
 				}
 				break;
@@ -265,7 +285,7 @@ public class TiggrammarParser extends Parser {
 				_localctx = new ConstBoolContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(15);
+				setState(17);
 				((ConstBoolContext)_localctx).boolConst = match(BOOL);
 				}
 				break;
@@ -273,7 +293,7 @@ public class TiggrammarParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(31);
+			setState(33);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -281,7 +301,7 @@ public class TiggrammarParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(29);
+					setState(31);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 					case 1:
@@ -289,12 +309,12 @@ public class TiggrammarParser extends Parser {
 						_localctx = new BinaryContext(new ExprContext(_parentctx, _parentState));
 						((BinaryContext)_localctx).arg1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(18);
+						setState(20);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(19);
+						setState(21);
 						((BinaryContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 4032L) != 0)) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 8064L) != 0)) ) {
 							((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -302,7 +322,7 @@ public class TiggrammarParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(20);
+						setState(22);
 						((BinaryContext)_localctx).arg2 = expr(6);
 						}
 						break;
@@ -311,12 +331,12 @@ public class TiggrammarParser extends Parser {
 						_localctx = new BinaryContext(new ExprContext(_parentctx, _parentState));
 						((BinaryContext)_localctx).arg1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(21);
+						setState(23);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(22);
+						setState(24);
 						((BinaryContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 28672L) != 0)) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 57344L) != 0)) ) {
 							((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -324,7 +344,7 @@ public class TiggrammarParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(23);
+						setState(25);
 						((BinaryContext)_localctx).arg2 = expr(5);
 						}
 						break;
@@ -333,12 +353,12 @@ public class TiggrammarParser extends Parser {
 						_localctx = new BinaryContext(new ExprContext(_parentctx, _parentState));
 						((BinaryContext)_localctx).arg1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(24);
+						setState(26);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(25);
+						setState(27);
 						((BinaryContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !(_la==T__1 || _la==T__2) ) {
+						if ( !(_la==T__2 || _la==T__3) ) {
 							((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -346,7 +366,7 @@ public class TiggrammarParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(26);
+						setState(28);
 						((BinaryContext)_localctx).arg2 = expr(4);
 						}
 						break;
@@ -355,16 +375,16 @@ public class TiggrammarParser extends Parser {
 						_localctx = new SequenceContext(new ExprContext(_parentctx, _parentState));
 						((SequenceContext)_localctx).arg = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(27);
-						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
-						setState(28);
+						setState(29);
+						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
+						setState(30);
 						match(T__0);
 						}
 						break;
 					}
 					} 
 				}
-				setState(33);
+				setState(35);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			}
@@ -397,39 +417,40 @@ public class TiggrammarParser extends Parser {
 		case 2:
 			return precpred(_ctx, 3);
 		case 3:
-			return precpred(_ctx, 8);
+			return precpred(_ctx, 9);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0013#\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0001"+
+		"\u0004\u0001\u0015%\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0003"+
-		"\u0001\u0011\b\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
 		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0005\u0001\u001e\b\u0001\n\u0001\f\u0001!\t\u0001\u0001\u0001"+
-		"\u0000\u0001\u0002\u0002\u0000\u0002\u0000\u0003\u0001\u0000\u0002\u0003"+
-		"\u0001\u0000\u0006\u000b\u0001\u0000\f\u000e\'\u0000\u0004\u0001\u0000"+
-		"\u0000\u0000\u0002\u0010\u0001\u0000\u0000\u0000\u0004\u0005\u0003\u0002"+
-		"\u0001\u0000\u0005\u0006\u0005\u0000\u0000\u0001\u0006\u0001\u0001\u0000"+
-		"\u0000\u0000\u0007\b\u0006\u0001\uffff\uffff\u0000\b\t\u0007\u0000\u0000"+
-		"\u0000\t\u0011\u0003\u0002\u0001\u0007\n\u000b\u0005\u0004\u0000\u0000"+
-		"\u000b\f\u0003\u0002\u0001\u0000\f\r\u0005\u0005\u0000\u0000\r\u0011\u0001"+
-		"\u0000\u0000\u0000\u000e\u0011\u0005\u000f\u0000\u0000\u000f\u0011\u0005"+
-		"\u0010\u0000\u0000\u0010\u0007\u0001\u0000\u0000\u0000\u0010\n\u0001\u0000"+
-		"\u0000\u0000\u0010\u000e\u0001\u0000\u0000\u0000\u0010\u000f\u0001\u0000"+
-		"\u0000\u0000\u0011\u001f\u0001\u0000\u0000\u0000\u0012\u0013\n\u0005\u0000"+
-		"\u0000\u0013\u0014\u0007\u0001\u0000\u0000\u0014\u001e\u0003\u0002\u0001"+
-		"\u0006\u0015\u0016\n\u0004\u0000\u0000\u0016\u0017\u0007\u0002\u0000\u0000"+
-		"\u0017\u001e\u0003\u0002\u0001\u0005\u0018\u0019\n\u0003\u0000\u0000\u0019"+
-		"\u001a\u0007\u0000\u0000\u0000\u001a\u001e\u0003\u0002\u0001\u0004\u001b"+
-		"\u001c\n\b\u0000\u0000\u001c\u001e\u0005\u0001\u0000\u0000\u001d\u0012"+
-		"\u0001\u0000\u0000\u0000\u001d\u0015\u0001\u0000\u0000\u0000\u001d\u0018"+
-		"\u0001\u0000\u0000\u0000\u001d\u001b\u0001\u0000\u0000\u0000\u001e!\u0001"+
-		"\u0000\u0000\u0000\u001f\u001d\u0001\u0000\u0000\u0000\u001f \u0001\u0000"+
-		"\u0000\u0000 \u0003\u0001\u0000\u0000\u0000!\u001f\u0001\u0000\u0000\u0000"+
-		"\u0003\u0010\u001d\u001f";
+		"\u0001\u0001\u0001\u0003\u0001\u0013\b\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0005\u0001 \b\u0001\n\u0001\f\u0001#\t"+
+		"\u0001\u0001\u0001\u0000\u0001\u0002\u0002\u0000\u0002\u0000\u0003\u0001"+
+		"\u0000\u0003\u0004\u0001\u0000\u0007\f\u0001\u0000\r\u000f*\u0000\u0004"+
+		"\u0001\u0000\u0000\u0000\u0002\u0012\u0001\u0000\u0000\u0000\u0004\u0005"+
+		"\u0003\u0002\u0001\u0000\u0005\u0006\u0005\u0000\u0000\u0001\u0006\u0001"+
+		"\u0001\u0000\u0000\u0000\u0007\b\u0006\u0001\uffff\uffff\u0000\b\t\u0005"+
+		"\u0002\u0000\u0000\t\u0013\u0003\u0002\u0001\b\n\u000b\u0007\u0000\u0000"+
+		"\u0000\u000b\u0013\u0003\u0002\u0001\u0007\f\r\u0005\u0005\u0000\u0000"+
+		"\r\u000e\u0003\u0002\u0001\u0000\u000e\u000f\u0005\u0006\u0000\u0000\u000f"+
+		"\u0013\u0001\u0000\u0000\u0000\u0010\u0013\u0005\u0010\u0000\u0000\u0011"+
+		"\u0013\u0005\u0011\u0000\u0000\u0012\u0007\u0001\u0000\u0000\u0000\u0012"+
+		"\n\u0001\u0000\u0000\u0000\u0012\f\u0001\u0000\u0000\u0000\u0012\u0010"+
+		"\u0001\u0000\u0000\u0000\u0012\u0011\u0001\u0000\u0000\u0000\u0013!\u0001"+
+		"\u0000\u0000\u0000\u0014\u0015\n\u0005\u0000\u0000\u0015\u0016\u0007\u0001"+
+		"\u0000\u0000\u0016 \u0003\u0002\u0001\u0006\u0017\u0018\n\u0004\u0000"+
+		"\u0000\u0018\u0019\u0007\u0002\u0000\u0000\u0019 \u0003\u0002\u0001\u0005"+
+		"\u001a\u001b\n\u0003\u0000\u0000\u001b\u001c\u0007\u0000\u0000\u0000\u001c"+
+		" \u0003\u0002\u0001\u0004\u001d\u001e\n\t\u0000\u0000\u001e \u0005\u0001"+
+		"\u0000\u0000\u001f\u0014\u0001\u0000\u0000\u0000\u001f\u0017\u0001\u0000"+
+		"\u0000\u0000\u001f\u001a\u0001\u0000\u0000\u0000\u001f\u001d\u0001\u0000"+
+		"\u0000\u0000 #\u0001\u0000\u0000\u0000!\u001f\u0001\u0000\u0000\u0000"+
+		"!\"\u0001\u0000\u0000\u0000\"\u0003\u0001\u0000\u0000\u0000#!\u0001\u0000"+
+		"\u0000\u0000\u0003\u0012\u001f!";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
