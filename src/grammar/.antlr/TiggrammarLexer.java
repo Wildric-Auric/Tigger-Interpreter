@@ -1,4 +1,4 @@
-// Generated from src/grammar/Tiggrammar.g4 by ANTLR 4.13.1
+// Generated from /home/hamon/Dropbox/ESIEE/E4S2/Tigger-Interpreter/src/grammar/Tiggrammar.g4 by ANTLR 4.13.1
 
     package grammar;
 

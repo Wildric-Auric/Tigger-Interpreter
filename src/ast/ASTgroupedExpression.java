@@ -12,11 +12,11 @@ public class ASTgroupedExpression extends ASTexpression {
       return expr;
     }
   
-    public String toString(){
+    public String toString() {
       return "(" + expr.toString() + ")";
     }
   
-    public Object eval(){
+    public Object eval() {
       return expr.eval();
     }
   

@@ -1,4 +1,4 @@
-// Generated from src/grammar/Tiggrammar.g4 by ANTLR 4.13.1
+// Generated from /home/hamon/Dropbox/ESIEE/E4S2/Tigger-Interpreter/src/grammar/Tiggrammar.g4 by ANTLR 4.13.1
 
     package grammar;
 
@@ -107,14 +107,6 @@ public class TiggrammarParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_prog; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).enterProg(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).exitProg(this);
-		}
 	}
 
 	public final ProgContext prog() throws RecognitionException {
@@ -159,28 +151,12 @@ public class TiggrammarParser extends Parser {
 		public Token intConst;
 		public TerminalNode INT() { return getToken(TiggrammarParser.INT, 0); }
 		public ConstIntegerContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).enterConstInteger(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).exitConstInteger(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConstBoolContext extends ExprContext {
 		public Token boolConst;
 		public TerminalNode BOOL() { return getToken(TiggrammarParser.BOOL, 0); }
 		public ConstBoolContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).enterConstBool(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).exitConstBool(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class BinaryContext extends ExprContext {
@@ -194,14 +170,6 @@ public class TiggrammarParser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public BinaryContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).enterBinary(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).exitBinary(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class SequenceContext extends ExprContext {
@@ -210,14 +178,6 @@ public class TiggrammarParser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public SequenceContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).enterSequence(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).exitSequence(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class UnaryContext extends ExprContext {
@@ -227,14 +187,6 @@ public class TiggrammarParser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public UnaryContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).enterUnary(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).exitUnary(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class GroupedExprContext extends ExprContext {
@@ -243,14 +195,6 @@ public class TiggrammarParser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public GroupedExprContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).enterGroupedExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TiggrammarListener ) ((TiggrammarListener)listener).exitGroupedExpr(this);
-		}
 	}
 
 	public final ExprContext expr() throws RecognitionException {

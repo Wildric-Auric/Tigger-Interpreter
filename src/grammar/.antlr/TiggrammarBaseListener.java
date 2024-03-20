@@ -1,4 +1,4 @@
-// Generated from src/grammar/Tiggrammar.g4 by ANTLR 4.13.1
+// Generated from /home/hamon/Dropbox/ESIEE/E4S2/Tigger-Interpreter/src/grammar/Tiggrammar.g4 by ANTLR 4.13.1
 
     package grammar;
 
@@ -62,18 +62,6 @@ public class TiggrammarBaseListener implements TiggrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBinary(TiggrammarParser.BinaryContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSequence(TiggrammarParser.SequenceContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSequence(TiggrammarParser.SequenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -33,4 +33,8 @@ public class ASTfactory {
     return new ASTbool(value);
   }
 
+  public ASTsequence newSequence(ASTexpression expr) {
+    return new ASTsequence(expr);
+  }
+
 }

@@ -1,4 +1,4 @@
-// Generated from src/grammar/Tiggrammar.g4 by ANTLR 4.13.1
+// Generated from /home/hamon/Dropbox/ESIEE/E4S2/Tigger-Interpreter/src/grammar/Tiggrammar.g4 by ANTLR 4.13.1
 
     package grammar;
 
@@ -55,18 +55,6 @@ public interface TiggrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBinary(TiggrammarParser.BinaryContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Sequence}
-	 * labeled alternative in {@link TiggrammarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterSequence(TiggrammarParser.SequenceContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Sequence}
-	 * labeled alternative in {@link TiggrammarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitSequence(TiggrammarParser.SequenceContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Unary}
 	 * labeled alternative in {@link TiggrammarParser#expr}.
