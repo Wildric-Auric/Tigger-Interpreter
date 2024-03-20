@@ -20,6 +20,18 @@ public interface TiggrammarListener extends ParseTreeListener {
 	 */
 	void exitProg(TiggrammarParser.ProgContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code Condition}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondition(TiggrammarParser.ConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Condition}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondition(TiggrammarParser.ConditionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Print}
 	 * labeled alternative in {@link TiggrammarParser#expr}.
 	 * @param ctx the parse tree

@@ -13,6 +13,9 @@ prog returns [ast.ASTprogram node]
 expr returns [ast.ASTexpression node]
     : arg=expr ';' # Sequence
     | '$' arg=expr # Print
+
+    | 'if' cond=expr 'then' argT=expr 'else' argF=expr # Condition
+
     | op=('-' | '+') arg=expr # Unary
     | '(' arg=expr ')' # GroupedExpr
     | arg1=expr op=('==' | '!=' | '>' | '>=' | '<' | '<=') arg2=expr # Binary

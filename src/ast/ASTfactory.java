@@ -19,11 +19,7 @@ public class ASTfactory {
     return new ASTinteger(value);
   }
 
-  // New :
-
-  public ASTcondition newCondition() {
-    return null;
-  }
+  // New
 
   public ASTgroupedExpression newGroupedExpression(ASTexpression expr) {
     return new ASTgroupedExpression(expr);
@@ -39,6 +35,10 @@ public class ASTfactory {
 
   public ASTsequence newSequence(ASTexpression expr) {
     return new ASTsequence(expr);
+  }
+
+  public ASTcondition newCondition(ASTexpression cond, ASTexpression exprT, ASTexpression exprF) {
+    return new ASTcondition(cond, exprT, exprF);
   }
 
 }
