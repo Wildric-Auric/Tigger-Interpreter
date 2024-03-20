@@ -32,6 +32,10 @@ public class ASTfactory {
   public ASTbool newBoolConstant(String value) {
     return new ASTbool(value);
   }
+  
+   public ASTprint newPrint(ASTexpression expr) {
+    return null;
+  }
 
   public ASTsequence newSequence(ASTexpression expr) {
     return new ASTsequence(expr);
