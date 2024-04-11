@@ -92,6 +92,18 @@ public interface TiggrammarListener extends ParseTreeListener {
 	 */
 	void exitSequence(TiggrammarParser.SequenceContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code ConstStr}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstStr(TiggrammarParser.ConstStrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ConstStr}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstStr(TiggrammarParser.ConstStrContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Unary}
 	 * labeled alternative in {@link TiggrammarParser#expr}.
 	 * @param ctx the parse tree

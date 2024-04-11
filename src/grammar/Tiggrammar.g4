@@ -23,6 +23,7 @@ expr returns [ast.ASTexpression node]
     | arg1=expr op=('+' | '-') arg2=expr # Binary
     | intConst=INT # ConstInteger
     | boolConst=BOOL # ConstBool
+    | strConst=STRING # ConstStr
     ;
 
 /*
@@ -36,6 +37,7 @@ expr returns [ast.ASTexpression node]
 // Constantes entières
 INT : [0-9]+ ;
 BOOL : 'true' | 'false' | 'T' | 'F' ;
+STRING : '"' (.)*? '"' ;
 ID : [a-z] [a-zA-Z0-9_] ;
 
 // Commentaires

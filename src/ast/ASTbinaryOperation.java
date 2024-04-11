@@ -39,6 +39,9 @@ public class ASTbinaryOperation extends ASTexpression {
     // NEW : Process the operation, by evaluating both operand
     Object op1 = leftOperand.eval();
     Object op2 = rightOperand.eval();
+
+    // INTEGERS
+
     if (op1 instanceof BigInteger && op2 instanceof BigInteger) {
       BigInteger b1 = (BigInteger) op1;
       BigInteger b2 = (BigInteger) op2;
@@ -56,6 +59,9 @@ public class ASTbinaryOperation extends ASTexpression {
       case "<=" : return Boolean.valueOf(b1.compareTo(b2) == -1 || b1.compareTo(b2) == 0);
       };
     }
+
+    // BOOLEANS
+
     else if (op1 instanceof Boolean && op2 instanceof Boolean) {
       Boolean b1 = (Boolean) op1;
       Boolean b2 = (Boolean) op2;
@@ -82,6 +88,25 @@ public class ASTbinaryOperation extends ASTexpression {
           case "*": return opBool ? opInt : BigInteger.ZERO;
         }
       }
+
+    // STRINGS
+    
+    // We can concatenate strings with anyting, so any String or ASTstr in the binary operation will do
+    else if (op1 instanceof ASTstr || op2 instanceof ASTstr || op1 instanceof String || op2 instanceof String) {
+
+      // If the operator is an expression, it evaluates it, otherwise it directly converts it to a string
+      String s1 = (op1 instanceof ASTexpression) ? ((ASTexpression) op1).eval().toString() : op1.toString();
+      String s2 = (op2 instanceof ASTexpression) ? ((ASTexpression) op2).eval().toString() : op2.toString();
+
+      switch (operator) {
+        case "+": return new ASTstr(s1 + s2);
+        case "-":
+          if (s1.endsWith(s2)) {
+            return new ASTstr(s1.substring(0, s1.length() - s2.length()));
+          }
+      }
+    }
+
     throw new ExpressionException(String.format("Illegal binary operation : '%s' between %s and %s",
       operator, op1.getClass(), op2.getClass()));
   }

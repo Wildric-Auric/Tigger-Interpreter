@@ -18,7 +18,7 @@ public class ASTbool extends ASTexpression {
     }
 
     public String toString() {
-        return String.valueOf(value);
+        return description;
     }
 
     public Object eval() {

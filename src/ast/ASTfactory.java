@@ -28,6 +28,10 @@ public class ASTfactory {
   public ASTbool newBoolConstant(String value) {
     return new ASTbool(value);
   }
+
+  public ASTstr newStrConstant(String value) {
+    return new ASTstr(value);
+  }
   
    public ASTprint newPrint(ASTexpression expr) {
     return new ASTprint(expr);
