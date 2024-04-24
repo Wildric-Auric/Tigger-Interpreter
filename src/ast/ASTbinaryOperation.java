@@ -39,6 +39,7 @@ public class ASTbinaryOperation extends ASTexpression {
     // NEW : Process the operation, by evaluating both operand
     Object op1 = leftOperand.eval();
     Object op2 = rightOperand.eval();
+    
 
     // INTEGERS
 
@@ -90,7 +91,24 @@ public class ASTbinaryOperation extends ASTexpression {
       }
 
     // STRINGS
-    
+    else if (((op1 instanceof String || op1 instanceof ASTstr) && op2 instanceof BigInteger) || ((op2 instanceof String || op2 instanceof ASTstr) && op1 instanceof BigInteger)) {
+        String opStr;
+        BigInteger opInt;
+        if (op1 instanceof ASTstr || op1 instanceof String) {
+          opStr = (String) op1;
+          opInt = (BigInteger) op2;
+        }
+        else {
+          opStr = (String) op2;
+          opInt = (BigInteger) op1;
+        }
+        switch (operator) {
+          case "*":
+            String s=""; 
+            for (int i=0;i < opInt.intValue();i++){ s+=opStr;}
+            return new ASTstr(s);
+        }
+      }
     // We can concatenate strings with anyting, so any String or ASTstr in the binary operation will do
     else if (op1 instanceof ASTstr || op2 instanceof ASTstr || op1 instanceof String || op2 instanceof String) {
 
@@ -104,8 +122,11 @@ public class ASTbinaryOperation extends ASTexpression {
           if (s1.endsWith(s2)) {
             return new ASTstr(s1.substring(0, s1.length() - s2.length()));
           }
+      
       }
     }
+    
+
 
     throw new ExpressionException(String.format("Illegal binary operation : '%s' between %s and %s",
       operator, op1.getClass(), op2.getClass()));
