@@ -89,7 +89,7 @@ public class TigListener implements TiggrammarListener {
 
 	@Override
 	public void exitCondition(TiggrammarParser.ConditionContext ctx) {
-		ctx.node = factory.newCondition(ctx.cond.node, ctx.argT.node, ctx.argF.node);
+		ctx.node = factory.newCondition(ctx.cond.node, ctx.argT.node, ctx.argF == null ? null : ctx.argF.node);
 	}
 
 	@Override

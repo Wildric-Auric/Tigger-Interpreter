@@ -13,7 +13,7 @@ prog returns [ast.ASTprogram node]
 expr returns [ast.ASTexpression node]
     : '$' arg=expr # Print
 
-    | 'if' cond=expr 'then' argT=expr 'else' argF=expr # Condition
+    | 'if' cond=expr 'then' argT=expr ('else' argF=expr)? # Condition
     | 'while' cond=expr 'do' task=expr # While
 
     | op=('-' | '+') arg=expr # Unary

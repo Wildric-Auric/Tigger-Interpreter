@@ -347,9 +347,9 @@ public class TiggrammarParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(47);
+			setState(48);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				{
 				_localctx = new PrintContext(_localctx);
@@ -375,10 +375,18 @@ public class TiggrammarParser extends Parser {
 				match(T__2);
 				setState(13);
 				((ConditionContext)_localctx).argT = expr(0);
-				setState(14);
-				match(T__3);
-				setState(15);
-				((ConditionContext)_localctx).argF = expr(11);
+				setState(16);
+				_errHandler.sync(this);
+				switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
+				case 1:
+					{
+					setState(14);
+					match(T__3);
+					setState(15);
+					((ConditionContext)_localctx).argF = expr(0);
+					}
+					break;
+				}
 				}
 				break;
 			case 3:
@@ -386,13 +394,13 @@ public class TiggrammarParser extends Parser {
 				_localctx = new WhileContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(17);
-				match(T__4);
 				setState(18);
-				((WhileContext)_localctx).cond = expr(0);
+				match(T__4);
 				setState(19);
-				match(T__5);
+				((WhileContext)_localctx).cond = expr(0);
 				setState(20);
+				match(T__5);
+				setState(21);
 				((WhileContext)_localctx).task = expr(10);
 				}
 				break;
@@ -401,7 +409,7 @@ public class TiggrammarParser extends Parser {
 				_localctx = new UnaryContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(22);
+				setState(23);
 				((UnaryContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !(_la==T__6 || _la==T__7) ) {
@@ -412,7 +420,7 @@ public class TiggrammarParser extends Parser {
 					_errHandler.reportMatch(this);
 					consume();
 				}
-				setState(23);
+				setState(24);
 				((UnaryContext)_localctx).arg = expr(9);
 				}
 				break;
@@ -421,11 +429,11 @@ public class TiggrammarParser extends Parser {
 				_localctx = new GroupedExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(24);
-				match(T__8);
 				setState(25);
-				((GroupedExprContext)_localctx).arg = expr(0);
+				match(T__8);
 				setState(26);
+				((GroupedExprContext)_localctx).arg = expr(0);
+				setState(27);
 				match(T__9);
 				}
 				break;
@@ -434,49 +442,49 @@ public class TiggrammarParser extends Parser {
 				_localctx = new SequenceContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(28);
-				match(T__8);
 				setState(29);
+				match(T__8);
+				setState(30);
 				((SequenceContext)_localctx).expr = expr(0);
 				((SequenceContext)_localctx).exprs.add(((SequenceContext)_localctx).expr);
-				setState(36);
+				setState(37);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
-						setState(31);
+						setState(32);
 						_errHandler.sync(this);
 						_la = _input.LA(1);
 						if (_la==T__10) {
 							{
-							setState(30);
+							setState(31);
 							match(T__10);
 							}
 						}
 
-						setState(33);
+						setState(34);
 						((SequenceContext)_localctx).expr = expr(0);
 						((SequenceContext)_localctx).exprs.add(((SequenceContext)_localctx).expr);
 						}
 						} 
 					}
-					setState(38);
+					setState(39);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 				}
-				setState(40);
+				setState(41);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==T__10) {
 					{
-					setState(39);
+					setState(40);
 					match(T__10);
 					}
 				}
 
-				setState(42);
+				setState(43);
 				match(T__9);
 				}
 				break;
@@ -485,7 +493,7 @@ public class TiggrammarParser extends Parser {
 				_localctx = new ConstIntegerContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(44);
+				setState(45);
 				((ConstIntegerContext)_localctx).intConst = match(INT);
 				}
 				break;
@@ -494,7 +502,7 @@ public class TiggrammarParser extends Parser {
 				_localctx = new ConstBoolContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(45);
+				setState(46);
 				((ConstBoolContext)_localctx).boolConst = match(BOOL);
 				}
 				break;
@@ -503,31 +511,31 @@ public class TiggrammarParser extends Parser {
 				_localctx = new ConstStrContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(46);
+				setState(47);
 				((ConstStrContext)_localctx).strConst = match(STRING);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(60);
+			setState(61);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(58);
+					setState(59);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 					case 1:
 						{
 						_localctx = new BinaryContext(new ExprContext(_parentctx, _parentState));
 						((BinaryContext)_localctx).arg1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(49);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
 						setState(50);
+						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
+						setState(51);
 						((BinaryContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 258048L) != 0)) ) {
@@ -538,7 +546,7 @@ public class TiggrammarParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(51);
+						setState(52);
 						((BinaryContext)_localctx).arg2 = expr(7);
 						}
 						break;
@@ -547,9 +555,9 @@ public class TiggrammarParser extends Parser {
 						_localctx = new BinaryContext(new ExprContext(_parentctx, _parentState));
 						((BinaryContext)_localctx).arg1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(52);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 						setState(53);
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						setState(54);
 						((BinaryContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 1835008L) != 0)) ) {
@@ -560,7 +568,7 @@ public class TiggrammarParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(54);
+						setState(55);
 						((BinaryContext)_localctx).arg2 = expr(6);
 						}
 						break;
@@ -569,9 +577,9 @@ public class TiggrammarParser extends Parser {
 						_localctx = new BinaryContext(new ExprContext(_parentctx, _parentState));
 						((BinaryContext)_localctx).arg1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(55);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
 						setState(56);
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						setState(57);
 						((BinaryContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==T__6 || _la==T__7) ) {
@@ -582,16 +590,16 @@ public class TiggrammarParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(57);
+						setState(58);
 						((BinaryContext)_localctx).arg2 = expr(5);
 						}
 						break;
 					}
 					} 
 				}
-				setState(62);
+				setState(63);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			}
 			}
 		}
@@ -626,49 +634,50 @@ public class TiggrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u001b@\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0001"+
+		"\u0004\u0001\u001bA\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0003"+
+		"\u0001\u0011\b\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
 		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0003\u0001 \b\u0001\u0001\u0001\u0005"+
-		"\u0001#\b\u0001\n\u0001\f\u0001&\t\u0001\u0001\u0001\u0003\u0001)\b\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0003\u0001"+
-		"0\b\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0005\u0001;\b\u0001"+
-		"\n\u0001\f\u0001>\t\u0001\u0001\u0001\u0000\u0001\u0002\u0002\u0000\u0002"+
-		"\u0000\u0003\u0001\u0000\u0007\b\u0001\u0000\f\u0011\u0001\u0000\u0012"+
-		"\u0014K\u0000\u0004\u0001\u0000\u0000\u0000\u0002/\u0001\u0000\u0000\u0000"+
-		"\u0004\u0005\u0003\u0002\u0001\u0000\u0005\u0006\u0005\u0000\u0000\u0001"+
-		"\u0006\u0001\u0001\u0000\u0000\u0000\u0007\b\u0006\u0001\uffff\uffff\u0000"+
-		"\b\t\u0005\u0001\u0000\u0000\t0\u0003\u0002\u0001\f\n\u000b\u0005\u0002"+
-		"\u0000\u0000\u000b\f\u0003\u0002\u0001\u0000\f\r\u0005\u0003\u0000\u0000"+
-		"\r\u000e\u0003\u0002\u0001\u0000\u000e\u000f\u0005\u0004\u0000\u0000\u000f"+
-		"\u0010\u0003\u0002\u0001\u000b\u00100\u0001\u0000\u0000\u0000\u0011\u0012"+
-		"\u0005\u0005\u0000\u0000\u0012\u0013\u0003\u0002\u0001\u0000\u0013\u0014"+
-		"\u0005\u0006\u0000\u0000\u0014\u0015\u0003\u0002\u0001\n\u00150\u0001"+
-		"\u0000\u0000\u0000\u0016\u0017\u0007\u0000\u0000\u0000\u00170\u0003\u0002"+
-		"\u0001\t\u0018\u0019\u0005\t\u0000\u0000\u0019\u001a\u0003\u0002\u0001"+
-		"\u0000\u001a\u001b\u0005\n\u0000\u0000\u001b0\u0001\u0000\u0000\u0000"+
-		"\u001c\u001d\u0005\t\u0000\u0000\u001d$\u0003\u0002\u0001\u0000\u001e"+
-		" \u0005\u000b\u0000\u0000\u001f\u001e\u0001\u0000\u0000\u0000\u001f \u0001"+
-		"\u0000\u0000\u0000 !\u0001\u0000\u0000\u0000!#\u0003\u0002\u0001\u0000"+
-		"\"\u001f\u0001\u0000\u0000\u0000#&\u0001\u0000\u0000\u0000$\"\u0001\u0000"+
-		"\u0000\u0000$%\u0001\u0000\u0000\u0000%(\u0001\u0000\u0000\u0000&$\u0001"+
-		"\u0000\u0000\u0000\')\u0005\u000b\u0000\u0000(\'\u0001\u0000\u0000\u0000"+
-		"()\u0001\u0000\u0000\u0000)*\u0001\u0000\u0000\u0000*+\u0005\n\u0000\u0000"+
-		"+0\u0001\u0000\u0000\u0000,0\u0005\u0015\u0000\u0000-0\u0005\u0016\u0000"+
-		"\u0000.0\u0005\u0017\u0000\u0000/\u0007\u0001\u0000\u0000\u0000/\n\u0001"+
-		"\u0000\u0000\u0000/\u0011\u0001\u0000\u0000\u0000/\u0016\u0001\u0000\u0000"+
-		"\u0000/\u0018\u0001\u0000\u0000\u0000/\u001c\u0001\u0000\u0000\u0000/"+
-		",\u0001\u0000\u0000\u0000/-\u0001\u0000\u0000\u0000/.\u0001\u0000\u0000"+
-		"\u00000<\u0001\u0000\u0000\u000012\n\u0006\u0000\u000023\u0007\u0001\u0000"+
-		"\u00003;\u0003\u0002\u0001\u000745\n\u0005\u0000\u000056\u0007\u0002\u0000"+
-		"\u00006;\u0003\u0002\u0001\u000678\n\u0004\u0000\u000089\u0007\u0000\u0000"+
-		"\u00009;\u0003\u0002\u0001\u0005:1\u0001\u0000\u0000\u0000:4\u0001\u0000"+
-		"\u0000\u0000:7\u0001\u0000\u0000\u0000;>\u0001\u0000\u0000\u0000<:\u0001"+
-		"\u0000\u0000\u0000<=\u0001\u0000\u0000\u0000=\u0003\u0001\u0000\u0000"+
-		"\u0000><\u0001\u0000\u0000\u0000\u0006\u001f$(/:<";
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0003\u0001!\b\u0001\u0001"+
+		"\u0001\u0005\u0001$\b\u0001\n\u0001\f\u0001\'\t\u0001\u0001\u0001\u0003"+
+		"\u0001*\b\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0003\u00011\b\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0005"+
+		"\u0001<\b\u0001\n\u0001\f\u0001?\t\u0001\u0001\u0001\u0000\u0001\u0002"+
+		"\u0002\u0000\u0002\u0000\u0003\u0001\u0000\u0007\b\u0001\u0000\f\u0011"+
+		"\u0001\u0000\u0012\u0014M\u0000\u0004\u0001\u0000\u0000\u0000\u00020\u0001"+
+		"\u0000\u0000\u0000\u0004\u0005\u0003\u0002\u0001\u0000\u0005\u0006\u0005"+
+		"\u0000\u0000\u0001\u0006\u0001\u0001\u0000\u0000\u0000\u0007\b\u0006\u0001"+
+		"\uffff\uffff\u0000\b\t\u0005\u0001\u0000\u0000\t1\u0003\u0002\u0001\f"+
+		"\n\u000b\u0005\u0002\u0000\u0000\u000b\f\u0003\u0002\u0001\u0000\f\r\u0005"+
+		"\u0003\u0000\u0000\r\u0010\u0003\u0002\u0001\u0000\u000e\u000f\u0005\u0004"+
+		"\u0000\u0000\u000f\u0011\u0003\u0002\u0001\u0000\u0010\u000e\u0001\u0000"+
+		"\u0000\u0000\u0010\u0011\u0001\u0000\u0000\u0000\u00111\u0001\u0000\u0000"+
+		"\u0000\u0012\u0013\u0005\u0005\u0000\u0000\u0013\u0014\u0003\u0002\u0001"+
+		"\u0000\u0014\u0015\u0005\u0006\u0000\u0000\u0015\u0016\u0003\u0002\u0001"+
+		"\n\u00161\u0001\u0000\u0000\u0000\u0017\u0018\u0007\u0000\u0000\u0000"+
+		"\u00181\u0003\u0002\u0001\t\u0019\u001a\u0005\t\u0000\u0000\u001a\u001b"+
+		"\u0003\u0002\u0001\u0000\u001b\u001c\u0005\n\u0000\u0000\u001c1\u0001"+
+		"\u0000\u0000\u0000\u001d\u001e\u0005\t\u0000\u0000\u001e%\u0003\u0002"+
+		"\u0001\u0000\u001f!\u0005\u000b\u0000\u0000 \u001f\u0001\u0000\u0000\u0000"+
+		" !\u0001\u0000\u0000\u0000!\"\u0001\u0000\u0000\u0000\"$\u0003\u0002\u0001"+
+		"\u0000# \u0001\u0000\u0000\u0000$\'\u0001\u0000\u0000\u0000%#\u0001\u0000"+
+		"\u0000\u0000%&\u0001\u0000\u0000\u0000&)\u0001\u0000\u0000\u0000\'%\u0001"+
+		"\u0000\u0000\u0000(*\u0005\u000b\u0000\u0000)(\u0001\u0000\u0000\u0000"+
+		")*\u0001\u0000\u0000\u0000*+\u0001\u0000\u0000\u0000+,\u0005\n\u0000\u0000"+
+		",1\u0001\u0000\u0000\u0000-1\u0005\u0015\u0000\u0000.1\u0005\u0016\u0000"+
+		"\u0000/1\u0005\u0017\u0000\u00000\u0007\u0001\u0000\u0000\u00000\n\u0001"+
+		"\u0000\u0000\u00000\u0012\u0001\u0000\u0000\u00000\u0017\u0001\u0000\u0000"+
+		"\u00000\u0019\u0001\u0000\u0000\u00000\u001d\u0001\u0000\u0000\u00000"+
+		"-\u0001\u0000\u0000\u00000.\u0001\u0000\u0000\u00000/\u0001\u0000\u0000"+
+		"\u00001=\u0001\u0000\u0000\u000023\n\u0006\u0000\u000034\u0007\u0001\u0000"+
+		"\u00004<\u0003\u0002\u0001\u000756\n\u0005\u0000\u000067\u0007\u0002\u0000"+
+		"\u00007<\u0003\u0002\u0001\u000689\n\u0004\u0000\u00009:\u0007\u0000\u0000"+
+		"\u0000:<\u0003\u0002\u0001\u0005;2\u0001\u0000\u0000\u0000;5\u0001\u0000"+
+		"\u0000\u0000;8\u0001\u0000\u0000\u0000<?\u0001\u0000\u0000\u0000=;\u0001"+
+		"\u0000\u0000\u0000=>\u0001\u0000\u0000\u0000>\u0003\u0001\u0000\u0000"+
+		"\u0000?=\u0001\u0000\u0000\u0000\u0007\u0010 %)0;=";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -13,12 +13,16 @@ public class ASTcondition extends ASTexpression {
     }
 
     public String toString() {
+        if (exprF == null)
+            return String.format("if %s then %s", cond.toString(), exprT.toString());
         return String.format("if %s then %s else %s", cond.toString(), exprT.toString(), exprF.toString());
     }
-  
+
     public Object eval() {
         if (cond.getBoolFromEval())
             return exprT.eval();
-        return exprF.eval();
+        if (exprF != null)
+            return exprF.eval();
+        return null;
     }
 }
