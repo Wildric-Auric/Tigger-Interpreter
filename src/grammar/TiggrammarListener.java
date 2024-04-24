@@ -80,18 +80,6 @@ public interface TiggrammarListener extends ParseTreeListener {
 	 */
 	void exitWhile(TiggrammarParser.WhileContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Binary}
-	 * labeled alternative in {@link TiggrammarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterBinary(TiggrammarParser.BinaryContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Binary}
-	 * labeled alternative in {@link TiggrammarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitBinary(TiggrammarParser.BinaryContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code Sequence}
 	 * labeled alternative in {@link TiggrammarParser#expr}.
 	 * @param ctx the parse tree
@@ -103,6 +91,18 @@ public interface TiggrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSequence(TiggrammarParser.SequenceContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Binary}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBinary(TiggrammarParser.BinaryContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Binary}
+	 * labeled alternative in {@link TiggrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBinary(TiggrammarParser.BinaryContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ConstStr}
 	 * labeled alternative in {@link TiggrammarParser#expr}.

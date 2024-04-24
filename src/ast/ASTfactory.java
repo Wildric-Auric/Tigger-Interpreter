@@ -1,4 +1,9 @@
 package ast;
+
+import java.util.List;
+
+import grammar.TiggrammarParser;
+
 public class ASTfactory {
 
   public ASTprogram newProgram(ASTexpression body) {
@@ -37,8 +42,8 @@ public class ASTfactory {
     return new ASTprint(expr);
   }
 
-  public ASTsequence newSequence(ASTexpression expr) {
-    return new ASTsequence(expr);
+  public ASTsequence newSequence(ASTexpression[] exprs) {
+    return new ASTsequence(exprs);
   }
 
   public ASTcondition newCondition(ASTexpression cond, ASTexpression exprT, ASTexpression exprF) {
@@ -49,4 +54,14 @@ public class ASTfactory {
     return new ASTloop(cond, task);
   }
   
+  public ASTexpression[] toExpressions(List<TiggrammarParser.ExprContext> ctxs) {
+    if (ctxs == null) return new ASTexpression[0];
+    ASTexpression[] r = new ASTexpression[ctxs.size()];
+    int pos = 0;
+    for (TiggrammarParser.ExprContext e : ctxs) {
+      r[pos++] = e.node;
+    }
+    return r;
+  }
+
 }

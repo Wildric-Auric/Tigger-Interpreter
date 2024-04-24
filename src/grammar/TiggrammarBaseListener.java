@@ -91,18 +91,6 @@ public class TiggrammarBaseListener implements TiggrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinary(TiggrammarParser.BinaryContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBinary(TiggrammarParser.BinaryContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterSequence(TiggrammarParser.SequenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -110,6 +98,18 @@ public class TiggrammarBaseListener implements TiggrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSequence(TiggrammarParser.SequenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBinary(TiggrammarParser.BinaryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBinary(TiggrammarParser.BinaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

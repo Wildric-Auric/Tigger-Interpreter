@@ -84,7 +84,7 @@ public class TigListener implements TiggrammarListener {
 
 	@Override
 	public void exitSequence(TiggrammarParser.SequenceContext ctx) {
-		ctx.node = factory.newSequence(ctx.arg.node);
+		ctx.node = factory.newSequence(factory.toExpressions(ctx.exprs));
 	}
 
 	@Override
