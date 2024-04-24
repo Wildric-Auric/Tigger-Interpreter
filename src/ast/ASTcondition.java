@@ -1,9 +1,5 @@
 package ast;
 
-import java.math.BigInteger;
-
-import frontend.ExpressionException;
-
 public class ASTcondition extends ASTexpression {
 
     private final ASTexpression cond;
@@ -21,18 +17,7 @@ public class ASTcondition extends ASTexpression {
     }
   
     public Object eval() {
-        Object condEval = cond.eval();
-        boolean valid = false;
-        if (condEval instanceof Boolean) {
-            valid = (Boolean) condEval;
-        }
-        else if (condEval instanceof BigInteger) {
-            valid = ((BigInteger) condEval).intValue() == 0;
-        }
-        else {
-            throw new ExpressionException("Invalid condition '" + condEval + "'");
-        }
-        if (valid)
+        if (cond.getBoolFromEval())
             return exprT.eval();
         return exprF.eval();
     }

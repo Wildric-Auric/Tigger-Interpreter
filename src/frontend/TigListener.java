@@ -92,6 +92,11 @@ public class TigListener implements TiggrammarListener {
 		ctx.node = factory.newCondition(ctx.cond.node, ctx.argT.node, ctx.argF.node);
 	}
 
+	@Override
+	public void exitWhile(TiggrammarParser.WhileContext ctx) {
+		ctx.node = factory.newLoop(ctx.cond.node, ctx.task.node);
+	}
+
 	@Override	public void enterEveryRule(ParserRuleContext arg0) {}
 	@Override	public void exitEveryRule(ParserRuleContext arg0) {}
 	@Override	public void visitErrorNode(ErrorNode arg0) {}
@@ -107,4 +112,5 @@ public class TigListener implements TiggrammarListener {
 	@Override	public void enterPrint(TiggrammarParser.PrintContext ctx) {}
 	@Override	public void enterSequence(TiggrammarParser.SequenceContext ctx) {}
 	@Override	public void enterCondition(TiggrammarParser.ConditionContext ctx) {}
+	@Override	public void enterWhile(TiggrammarParser.WhileContext ctx) {}
 }

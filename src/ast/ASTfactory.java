@@ -45,4 +45,8 @@ public class ASTfactory {
     return new ASTcondition(cond, exprT, exprF);
   }
 
+  public ASTloop newLoop(ASTexpression cond, ASTexpression task) {
+    return new ASTloop(cond, task);
+  }
+  
 }
