@@ -3,4 +3,4 @@ out
 src/grammar/
 jar/
 
-!src/Tiggramar.g4
+!src/grammar/Tiggrammar.g4
