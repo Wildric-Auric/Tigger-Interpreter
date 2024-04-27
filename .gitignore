@@ -1,3 +1,6 @@
 out
-src/grammar/.antlr/
+#everything in src/grammar should be ignored except .g4
+src/grammar/
 jar/
+
+!src/Tiggramar.g4
