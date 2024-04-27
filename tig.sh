@@ -6,3 +6,4 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 java -cp .:out/:jar/* Tigger $1
+
