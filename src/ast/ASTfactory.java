@@ -3,6 +3,7 @@ package ast;
 import java.util.List;
 
 import grammar.TiggrammarParser;
+import memory.Memory;
 
 public class ASTfactory {
 
@@ -54,8 +55,12 @@ public class ASTfactory {
     return new ASTloop(cond, task);
   }
   
-  public ASTvariable newVariable(String id,ASTexpression expr) {
-    return new ASTvariable(id,expr);
+  public ASTvariable newVariable(String id, ASTexpression expr) {
+    return new ASTvariable(id, expr);
+  }
+
+  public ASTvariable newRead(String id) {
+      return Memory.getVar(id);
   }
   
   public ASTexpression[] toExpressions(List<TiggrammarParser.ExprContext> ctxs) {

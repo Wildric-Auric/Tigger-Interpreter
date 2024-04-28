@@ -1,6 +1,7 @@
 package frontend;
 import ast.*;
 import grammar.*;
+import memory.Memory;
 
 import java.util.List;
 
@@ -98,7 +99,20 @@ public class TigListener implements TiggrammarListener {
 
 	@Override
 	public void exitAssign(TiggrammarParser.AssignContext ctx) {
+		//Ouss.if var exists we read instead of creating it.
+		ASTvariable v = Memory.getVar(ctx.identifier.getText());
+		if (v != null) {
+			v.setValue(ctx.value.node);
+			ctx.node = v;
+			return;
+		}
+		//Else we create a new var
 		ctx.node = factory.newVariable(ctx.identifier.getText(), ctx.value.node);
+	}
+
+	@Override 
+	public void exitRead(TiggrammarParser.ReadContext ctx) {
+		ctx.node = factory.newRead(ctx.identifier.getText());
 	}
 
 
@@ -119,4 +133,5 @@ public class TigListener implements TiggrammarListener {
 	@Override	public void enterCondition(TiggrammarParser.ConditionContext ctx) {}
 	@Override	public void enterWhile(TiggrammarParser.WhileContext ctx) {}
 	@Override   public void enterAssign(TiggrammarParser.AssignContext ctx) {}
+	@Override   public void enterRead(TiggrammarParser.ReadContext ctx) {}
 }

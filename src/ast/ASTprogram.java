@@ -1,4 +1,5 @@
 package ast;
+
 public class ASTprogram {
   public ASTprogram(ASTexpression expression) {
     this.body = expression;

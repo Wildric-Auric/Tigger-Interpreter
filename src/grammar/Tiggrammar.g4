@@ -18,7 +18,7 @@ expr returns [ast.ASTexpression node]
 
     | op=('-' | '+') arg=expr # Unary
     | '(' arg=expr ')' # GroupedExpr
-    | '(' exprs+=expr (';'? exprs+=expr)* ';'? ')' # Sequence
+    | '{' exprs+=expr (';'? exprs+=expr)* ';'? '}' # Sequence
     | arg1=expr op=('==' | '!=' | '>' | '>=' | '<' | '<=') arg2=expr # Binary
     | arg1=expr op=('*' | '/' | '%') arg2=expr # Binary
     | arg1=expr op=('+' | '-') arg2=expr # Binary
@@ -26,6 +26,7 @@ expr returns [ast.ASTexpression node]
     | boolConst=BOOL # ConstBool
     | strConst=STRING # ConstStr
     | identifier=ID '=' value=expr #Assign
+    | identifier=ID                #Read
     ;
 
 /*

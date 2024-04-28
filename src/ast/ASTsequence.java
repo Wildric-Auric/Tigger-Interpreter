@@ -1,5 +1,7 @@
 package ast;
 
+import memory.Memory;
+
 public class ASTsequence extends ASTexpression {
 
   private final ASTexpression[] exprs;
@@ -21,9 +23,11 @@ public class ASTsequence extends ASTexpression {
   public Object eval() {
 
     Object lastVal = null;
+    Memory.pushScope();
     for (ASTexpression expr : exprs) {
       lastVal = expr.eval();
     }
+    Memory.popScope();
     return lastVal;
   }
 }

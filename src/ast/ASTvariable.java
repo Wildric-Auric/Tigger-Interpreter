@@ -1,12 +1,16 @@
 package ast;
 
+import memory.Memory;
+
 public class ASTvariable extends ASTexpression {
-    public ASTexpression value;
+    public Object value;
     public String id;
 
     public ASTvariable (String id , ASTexpression expr) {
-        this.value = expr;
+        this.value = expr.eval();
         this.id    = id;
+        //Ouss. I would avoid complex logic in constructor though
+        Memory.pushVar(this);
     }
 
     public String getID() {
@@ -14,11 +18,15 @@ public class ASTvariable extends ASTexpression {
     }
 
 	public Object getValue() {
-        return value.eval();
+        return value;
     }
 
     public String toString(){
         return "("+this.id + "=" + this.value.toString()+")";
+    }
+
+    public void setValue(ASTexpression expr) {
+        this.value = expr;
     }
 
     public Object eval() {

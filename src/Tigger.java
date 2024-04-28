@@ -1,5 +1,6 @@
 import ast.*;
 import frontend.*;
+import memory.Memory;
 
 import java.io.File;
 
@@ -11,6 +12,7 @@ public class Tigger{
       System.exit(1);
     }else{
       System.out.println(args[0]);
+      Memory.Init(); //Init scope
       File f = new File (args[0]);
       TigParser parser = new TigParser();
       try {
