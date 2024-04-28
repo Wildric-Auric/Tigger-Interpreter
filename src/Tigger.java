@@ -20,6 +20,9 @@ public class Tigger{
         System.out.println(p.toString()+" = "+p.eval());
       } catch (Exception e) {
         System.out.println(e);
+        for (StackTraceElement s : e.getStackTrace()) {
+          System.out.println(s);
+        }
         System.exit(1);
       }
     }
