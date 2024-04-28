@@ -73,41 +73,43 @@ public class ASTbinaryOperation extends ASTexpression {
       }
     }
     else if ((op1 instanceof Boolean && op2 instanceof BigInteger) ||
-      (op1 instanceof BigInteger && op2 instanceof Boolean)) {
-        Boolean opBool;
-        BigInteger opInt;
-        if (op1 instanceof Boolean) {
-          opBool = (Boolean) op1;
-          opInt = (BigInteger) op2;
-        }
-        else {
-          opBool = (Boolean) op2;
-          opInt = (BigInteger) op1;
-        }
-        switch (operator) {
-          case "*": return opBool ? opInt : BigInteger.ZERO;
-        }
+    (op1 instanceof BigInteger && op2 instanceof Boolean)) {
+      Boolean opBool;
+      BigInteger opInt;
+      if (op1 instanceof Boolean) {
+        opBool = (Boolean) op1;
+        opInt = (BigInteger) op2;
       }
+      else {
+        opBool = (Boolean) op2;
+        opInt = (BigInteger) op1;
+      }
+      switch (operator) {
+        case "*": return opBool ? opInt : BigInteger.ZERO;
+      }
+    }
 
     // STRINGS
-    else if (((op1 instanceof String || op1 instanceof ASTstr) && op2 instanceof BigInteger) || ((op2 instanceof String || op2 instanceof ASTstr) && op1 instanceof BigInteger)) {
-        String opStr;
-        BigInteger opInt;
-        if (op1 instanceof ASTstr || op1 instanceof String) {
-          opStr = (String) op1;
-          opInt = (BigInteger) op2;
-        }
-        else {
-          opStr = (String) op2;
-          opInt = (BigInteger) op1;
-        }
-        switch (operator) {
-          case "*":
-            String s=""; 
-            for (int i=0;i < opInt.intValue();i++){ s+=opStr;}
-            return new ASTstr(s);
-        }
+
+    else if (((op1 instanceof String || op1 instanceof ASTstr) && op2 instanceof BigInteger) ||
+      ((op2 instanceof String || op2 instanceof ASTstr) && op1 instanceof BigInteger)) {
+      String opStr;
+      BigInteger opInt;
+      if (op1 instanceof ASTstr || op1 instanceof String) {
+        opStr = (String) op1;
+        opInt = (BigInteger) op2;
       }
+      else {
+        opStr = (String) op2;
+        opInt = (BigInteger) op1;
+      }
+      switch (operator) {
+        case "*":
+          String s=""; 
+          for (int i=0;i < opInt.intValue();i++){ s+=opStr;}
+          return new ASTstr(s);
+      }
+    }
     // We can concatenate strings with anyting, so any String or ASTstr in the binary operation will do
     else if (op1 instanceof ASTstr || op2 instanceof ASTstr || op1 instanceof String || op2 instanceof String) {
 
@@ -124,8 +126,6 @@ public class ASTbinaryOperation extends ASTexpression {
       
       }
     }
-    
-
 
     throw new ExpressionException(String.format("Illegal binary operation : '%s' between %s and %s",
       operator, op1.getClass(), op2.getClass()));

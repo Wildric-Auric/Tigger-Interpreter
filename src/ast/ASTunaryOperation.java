@@ -1,6 +1,8 @@
 package ast;
 import java.math.BigInteger;
 
+import frontend.ExpressionException;
+
 public class ASTunaryOperation extends ASTexpression {
 
   public ASTunaryOperation (String operator, ASTexpression operand) {
@@ -24,14 +26,23 @@ public class ASTunaryOperation extends ASTexpression {
  }
 
   public Object eval(){
+
     Object op = operand.eval();
-    if (op instanceof BigInteger){
+
+    if (op instanceof BigInteger) {
       BigInteger b = (BigInteger) op;
-      switch (operator){
-      case "-" : return BigInteger.ZERO.subtract(b);
-      case "+" : return b;
+      switch (operator) {
+        case "-": return BigInteger.ZERO.subtract(b);
+        case "+": return b;
       };
     }
-    return null;
+    else if (op instanceof Boolean) {
+      Boolean b = (Boolean) op;
+      if (operator.equals("!")) {
+        return !b;
+      }
+    }
+    
+    throw new ExpressionException(String.format("Illegal binary operation : '%s' with %s", operator, op.getClass()));
   }
 }
