@@ -7,7 +7,7 @@ public class ASTvariable extends ASTexpression {
     public String id;
 
     public ASTvariable (String id , ASTexpression expr) {
-        this.value = expr.eval();
+        this.setValue(expr);
         this.id    = id;
         //Ouss. I would avoid complex logic in constructor though
         Memory.pushVar(this);
@@ -26,7 +26,7 @@ public class ASTvariable extends ASTexpression {
     }
 
     public void setValue(ASTexpression expr) {
-        this.value = expr;
+        this.value = expr.eval();
     }
 
     public Object eval() {

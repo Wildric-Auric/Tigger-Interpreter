@@ -7,7 +7,7 @@ import java.util.Stack;
 
 
 public class Memory {
-    private static Stack< HashMap<String, ASTvariable> >  data = new Stack<HashMap<String,ASTvariable>>();    //Ouss. Bad memory, too much cache issue, but it is java lol
+    public static Stack< HashMap<String, ASTvariable> >  data = new Stack<HashMap<String,ASTvariable>>();    //Ouss. Bad memory, too much cache issue, but it is java lol
     private static HashMap<String, ASTvariable>           cache= new HashMap<String,ASTvariable>();           //Ouss. To  access variable in constant time
 
     public static void pushScope() {

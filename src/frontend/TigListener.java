@@ -129,7 +129,7 @@ public class TigListener implements TiggrammarListener {
 	@Override	public void enterConstBool(TiggrammarParser.ConstBoolContext ctx) {}
 	@Override	public void enterConstStr(TiggrammarParser.ConstStrContext ctx) {}
 	@Override	public void enterPrint(TiggrammarParser.PrintContext ctx) {}
-	@Override	public void enterSequence(TiggrammarParser.SequenceContext ctx) {}
+	@Override	public void enterSequence(TiggrammarParser.SequenceContext ctx) { Memory.pushScope();}
 	@Override	public void enterCondition(TiggrammarParser.ConditionContext ctx) {}
 	@Override	public void enterWhile(TiggrammarParser.WhileContext ctx) {}
 	@Override   public void enterAssign(TiggrammarParser.AssignContext ctx) {}

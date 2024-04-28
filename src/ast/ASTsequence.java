@@ -14,6 +14,7 @@ public class ASTsequence extends ASTexpression {
     
     StringBuilder builder = new StringBuilder();
     for (ASTexpression expr : exprs) {
+      if (expr == null) continue;
       builder.append(expr.toString());
       builder.append(";");
     }
@@ -23,11 +24,10 @@ public class ASTsequence extends ASTexpression {
   public Object eval() {
 
     Object lastVal = null;
-    Memory.pushScope();
     for (ASTexpression expr : exprs) {
       lastVal = expr.eval();
     }
-    Memory.popScope();
+    Memory.popScope();  
     return lastVal;
   }
 }
