@@ -100,14 +100,15 @@ public class TigListener implements TiggrammarListener {
 	@Override
 	public void exitAssign(TiggrammarParser.AssignContext ctx) {
 		//Ouss.if var exists we read instead of creating it.
-		ASTvariable v = Memory.getVar(ctx.identifier.getText());
-		if (v != null) {
+		String varName = ctx.identifier.getText();
+		if (Memory.hasVar(null)) {
+			ASTvariable v = Memory.getVar(varName);
 			v.setValue(ctx.value.node);
 			ctx.node = v;
 			return;
 		}
 		//Else we create a new var
-		ctx.node = factory.newVariable(ctx.identifier.getText(), ctx.value.node);
+		ctx.node = factory.newVariable(varName, ctx.value.node);
 	}
 
 	@Override 

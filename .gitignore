@@ -1,5 +1,4 @@
 out
 #everything in src/grammar should be ignored except .g4
-jar/
 src/grammar/**
 !src/grammar/Tiggrammar.g4

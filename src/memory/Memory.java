@@ -1,6 +1,7 @@
 package memory;
 
 import ast.ASTvariable;
+import frontend.VariableException;
 
 import java.util.HashMap;
 import java.util.Stack;
@@ -31,7 +32,14 @@ public class Memory {
         cache.put(value.getID(),value);
     }
 
+    public static boolean hasVar(String id) {
+        return cache.get(id) != null;
+    }
+
     public static ASTvariable getVar(String id) {
+        Object var = cache.get(id);
+        if (var == null)
+            throw new VariableException("Unknown variable : " + id);
         return cache.get(id);
     }
 }

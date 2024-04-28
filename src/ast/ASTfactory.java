@@ -60,7 +60,7 @@ public class ASTfactory {
   }
 
   public ASTvariable newRead(String id) {
-      return Memory.getVar(id);
+    return Memory.getVar(id);
   }
   
   public ASTexpression[] toExpressions(List<TiggrammarParser.ExprContext> ctxs) {

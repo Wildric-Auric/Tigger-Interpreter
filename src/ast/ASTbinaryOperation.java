@@ -36,11 +36,10 @@ public class ASTbinaryOperation extends ASTexpression {
   }
 
   public Object eval() {
-    // NEW : Process the operation, by evaluating both operand
+    // Process the operation, by evaluating both operand
     Object op1 = leftOperand.eval();
     Object op2 = rightOperand.eval();
     
-
     // INTEGERS
 
     if (op1 instanceof BigInteger && op2 instanceof BigInteger) {
