@@ -18,7 +18,7 @@ Ex : `5` ; `19837982` ; `004`
 
 Opérations entre entiers :
 - Addition `a + b` -> int
-- Soustration `a - b` -> int
+- Soustraction `a - b` -> int
 - Multiplication `a * b` -> int
 - Division `a / b` -> int
 - Modulo `a % b` -> int
@@ -36,7 +36,7 @@ Les entiers peuvent également être mis au négatif : `!a` ou explicitement ind
 Les chaînes de caractères (String) sont formées à partir de guillemets doubles uniquement.
 Ex : `"AZERTY"` ; `"Hello World`
 
-Opérations entre une chaîne de caractère et **n'importe quel type**, l'autre opérande sera convertie en string :
+Opérations entre une chaîne de caractère et **n'importe quel type**, l'autre opérande sera converti en string :
 - Concaténation `a + b` -> str
 - Substitution `a - b` -> str
 
@@ -66,7 +66,7 @@ Opérations entre booléens :
 - Égalité `a == b` -> bool
 - Inégalité `a != b` -> bool
 
-La plupart des autres langages utilisent `|` et `&` pour les opérations logiques, bien que cela aurait été facile de ajouter ces opérantes, les symboles `+` et `*` ont été choisis puisque la notation avec ces symboles est utilisée dans certains secteurs tels que l'électronique pour représenter des circuits logiques.
+La plupart des autres langages utilisent `|` et `&` pour les opérations logiques, bien que cela aurait été facile d'ajouter ces opérantes, les symboles `+` et `*` ont été choisis puisque la notation avec ces symboles est utilisée dans certains secteurs tels que l'électronique pour représenter des circuits logiques.
 Cela libère ces symboles pour théoriquement d'autres utilités dans le langage.
 
 Opération uniquement entre un booléen et entier :
@@ -107,7 +107,7 @@ Ce print renvoie également le résultat qu'il vient d'afficher, permettant d'ê
 Le choix de la forme de ce print est pour en faire un puissant outil de debug, en effet il suffit d'insérer un seul caractère de pouvoir afficher ce que l'on veut de n'importe quelle instruction du code, et savoir où cet affichage s'est produit, sans avoir à insérer de nouvelles lignes.
 
 ## Conditions
-Les conditions if-then-else sont implémentées de manière assez classique. La partie `else` étant optionelle.
+Les conditions if-then-else sont implémentées de manière assez classique. La partie `else` étant optionel.
 Ex : `if a > 10 then $"10+" else $a`
 Les conditions retournent soit null, soit la dernière expression exécutée.
 Les conditions prennent un bool ou un entier. Dans le cas d'un entier, l'entier est interprété à true s'il est supérieur à 0.
@@ -145,7 +145,7 @@ for i to 20 do {
 Séquences et variables
 =========
 
-Les séquences d'expressions sont toujours encadrées par des accolades `{` `}` (même le sommet du programme) et les expressions sont séparées par des point-virgule.
+Les séquences d'expressions sont toujours encadrées par des accolades `{` `}` (même le sommet du programme) et les expressions sont séparées par des `;`.
 Les séquences retournent la dernière variable affectée.
 
 Les affectations se font via l'opérateur `=` de manière similaire au Python et retournent elle-même la valeur affectée.
@@ -173,3 +173,11 @@ Ex :
 ```
 
 En cas de tentative de récupérer une variable qui n'existe pas, le programme lance une erreur `VariableException`.
+
+Problèmes rencontrés
+=========
+
+Le projet s'est globalement déroulé sans trop de problème, à l'exception de l'implémentation des variables ou l'implémentation initiale était une HashMap vers les noeuds AST plutôt que leur contenu ce qui a énormément complexifié le système d'évaluation.
+Finalement, un système de HashMap de mémoire de type `Object` a été beaucoup plus simple.
+
+Il y a eu une mauvaise estimation de la charge de travail vers la fin, ce qui a mené a un retard.
