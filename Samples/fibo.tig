@@ -1,0 +1,33 @@
+fn add(a,b) {
+    a + b
+}
+
+fn fibo(a) {
+    x = 0;
+    y = 1;
+    ret = 0
+    if (a < 1) then {
+        ret = 0;
+    }
+    else {
+        if (a == 1) then {
+            ret = 1
+        }
+        else {
+            for j = 0 to a-2 do {
+                temp = add(x,y);
+                x    = y;
+                y    = temp;
+            }
+            y
+        }
+    }
+}
+
+{
+    a = 12;
+    
+    for i = 0 to a do {
+        $fibo(i);
+    }
+}

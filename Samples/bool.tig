@@ -1,1 +1,1 @@
-(T != false) * F + T
+$((T != false) * F + T)

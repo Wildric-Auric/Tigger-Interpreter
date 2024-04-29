@@ -1,4 +1,4 @@
 {
-s = "ABC99DEF" - "DEF";
-s - 99;
+    s = "ABC99DEF" - "DEF";
+    $s - 99;
 }
