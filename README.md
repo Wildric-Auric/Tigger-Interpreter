@@ -1,6 +1,9 @@
-Projet de programmation d'interpréteur de code, écrit en Java à l'aide de ANTLR.
+# Introduction
+
+Ceci est un projet de programmation d'interpréteur de code, écrit en **Java** à l'aide de **ANTLR**.
 Ce langage implémente les fonctionnalités de base que l'on peut trouver dans la plupart des autres langages de programmation.
-Ce langage a comme objectif de permettre d'écrire du code très concis, avec une flexibilité des types et des opérations.
+Ce langage, au typage faible, a comme objectif de permettre d'écrire du code très concis, avec une flexibilité des types et des opérations. <br>
+
 
 Projet par :
 - Oussama SOUDASSI
@@ -11,6 +14,7 @@ Projet par :
 
 Types
 =========
+
 
 ### Entiers (int)
 Les entiers se forment via une simple suite de chiffres.
@@ -115,7 +119,7 @@ Les conditions prennent un bool ou un entier. Dans le cas d'un entier, l'entier 
 ## Boucle while
 Les boucles while sont également implémentées de manière assez classique.
 Ex :
-```
+```ps
 while a do {
     $a;
     a = a / 2;
@@ -128,7 +132,7 @@ Les boucles for sont du pur sucre syntaxique sur les boucles while.
 La variable utilisée pour l'incrémentation n'existe que au scope du contenu de la boucle.
 Le mot-clé `to` indique à la variable d'incrémenter jusqu'à cette valeur **inclue**.
 Ex :
-```
+```ps
 for i = 30 to 35 do {
     $i
 }
@@ -136,7 +140,7 @@ for i = 30 to 35 do {
 Pour afficher les nombres de 30 à 35 inclus.
 La boucle for fonctionne également sans avoir à explicitement écrire l'affectation, la variable sera alors assignée à 0 par défaut.
 Ex :
-```
+```ps
 for i to 20 do {
     $i
 }
@@ -153,7 +157,7 @@ Les affectations se font via l'opérateur `=` de manière similaire au Python et
 Chaque séquence définit son propre scope, à la fin d'un scope les variables déclarées à l'intérieur de celles-ci uniquement sont détruites.
 
 Ex :
-```
+```ps
 {
     a = 4;
     b = 5;
@@ -173,6 +177,56 @@ Ex :
 ```
 
 En cas de tentative de récupérer une variable qui n'existe pas, le programme lance une erreur `VariableException`.
+
+Fonctions
+=========
+Les fonctions ont la syntaxe suivantes `fn ID(arg0,...,argn) expr`.
+Avant d'expliquer en détail leur fonctionnement, penchons nous sur un example complet
+qui reprend en plus quelques-unes des fonctionnalités déjà discutées.
+```ps
+fn add(a,b) {
+    a + b
+}
+
+fn fibo(a) {
+    x = 0;
+    y = 1;
+    ret = 0
+    if (a < 1) then {
+        ret = 0;
+    }
+    else {
+        if (a == 1) then {
+            ret = 1
+        }
+        else {
+            for j = 0 to a-2 do {
+                temp = add(x,y);
+                x    = y;
+                y    = temp;
+            }
+            y
+        }
+    }
+}
+
+{
+    a = 12;
+    
+    for i = 0 to a do {
+        $fibo(i);
+    }
+}
+
+```
+L'exécution de ce code affiche sur la console les `a` premier nombres de la suite de fibonacci.<br>
+Une fonction à au moins zero arguments, et au plus autant que tolérés par la mémoire.
+Les fonctions sont enregistrées **en début du code** c'est à dire qu'une fois une expression 
+est appelé on ne peut enregistrer une autre fonction. <br>
+Une fonction n'est enregistrée que lorsque l'entièreté de son code est 
+lu *(ie identifiant + arguments + corps)*, donc essayer d'appeler la fonction à l'intérieur de son corps même (recursivité) lève une exception `FunctionCallException`, même exception levée si une fonction
+est appelée sans qu'elle ne soit enregistrée.<br>
+`fibo(i)` correspond à l'appel de la fonction `fibo` avec `i` comme paramètre. La passage d'un nombre invalide de paramètres lève la même exception que précédemment, avec un message coorrespondant.
 
 Problèmes rencontrés
 =========
