@@ -62,6 +62,14 @@ public class ASTfactory {
   public ASTread newRead(String id) {
     return new ASTread(id);
   }
+
+  public ASTfunction newFunction(String id, String[] vars, ASTexpression block) {
+    return new ASTfunction(id, vars, block);
+  }
+  
+  public ASTfunctionCall newFunctionCall(String id, ASTexpression[] params) {
+    return new ASTfunctionCall(id, params);
+  }
   
   public ASTexpression[] toExpressions(List<TiggrammarParser.ExprContext> ctxs) {
     if (ctxs == null) return new ASTexpression[0];
@@ -72,5 +80,4 @@ public class ASTfactory {
     }
     return r;
   }
-
 }

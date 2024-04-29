@@ -3,10 +3,15 @@ grammar Tiggrammar;
 @header {
     package grammar;
 }
-
-// un programme est (pour l'instant) une expression
+//Program is expr
 prog returns [ast.ASTprogram node] 
-    : body=expr EOF
+    : 
+    (func)* body=expr EOF
+    ;
+
+//Functions
+func returns [ast.ASTfunction node] 
+    : 'fn' identifier=ID '(' ( args+=ID (',' args+=ID)*)? ')' block=expr
     ;
 
 // Expressions enrichies
@@ -27,6 +32,7 @@ expr returns [ast.ASTexpression node]
     | boolConst=BOOL # ConstBool
     | strConst=STRING # ConstStr
     | identifier=ID '=' value=expr # Assign
+    | identifier=ID '(' ( args+=expr (',' args+=expr)* )? ')' #FunctionCall 
     | identifier=ID                # Read
     ;
 

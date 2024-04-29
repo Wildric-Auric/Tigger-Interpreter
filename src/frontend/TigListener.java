@@ -136,6 +136,20 @@ public class TigListener implements TiggrammarListener {
 		ctx.node = outSeq;
 	}
 
+	@Override
+	public void exitFunc(TiggrammarParser.FuncContext ctx) {
+		String[] vars = new String[ctx.args.size()];
+		for (int i = 0; i < ctx.args.size(); ++i) {
+			vars[i] = ctx.args.get(i).getText();
+		}
+		ctx.node = factory.newFunction(ctx.identifier.getText(), vars, ctx.block.node);
+	}
+
+	@Override
+	public void exitFunctionCall(TiggrammarParser.FunctionCallContext ctx) {
+		ctx.node = factory.newFunctionCall(ctx.identifier.getText(), factory.toExpressions(ctx.args));
+	}
+
 	@Override	public void enterEveryRule(ParserRuleContext arg0) {}
 	@Override	public void exitEveryRule(ParserRuleContext arg0) {}
 	@Override	public void visitErrorNode(ErrorNode arg0) {}
@@ -155,4 +169,6 @@ public class TigListener implements TiggrammarListener {
 	@Override   public void enterAssign(TiggrammarParser.AssignContext ctx) {}
 	@Override   public void enterRead(TiggrammarParser.ReadContext ctx) {}
 	@Override   public void enterFor(TiggrammarParser.ForContext ctx) {}
+	@Override   public void enterFunc(TiggrammarParser.FuncContext ctx) {}
+	@Override   public void enterFunctionCall(TiggrammarParser.FunctionCallContext ctx) {}
 }
