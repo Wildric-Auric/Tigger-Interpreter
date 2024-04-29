@@ -17,7 +17,8 @@ public class Tigger{
       TigParser parser = new TigParser();
       try {
         ASTprogram p = parser.getProg(f);
-        System.out.println(p.toString()+" = "+p.eval());
+        //Why the hell printing the program?? Pollutes and stdout System.out.println(p.toString()+" = "+p.eval());
+        p.eval();
       } catch (Exception e) {
         System.out.println(e);
         for (StackTraceElement s : e.getStackTrace()) {
