@@ -51,6 +51,7 @@ public class ASTbinaryOperation extends ASTexpression {
       case "*" : return b1.multiply(b2);
       case "/" : return b1.divide(b2);
       case "%" : return b1.mod(b2);
+      case "**" : return b1.pow(b2.intValue());
       case "==" : return Boolean.valueOf(b1.compareTo(b2) == 0);
       case "!=" : return Boolean.valueOf(b1.compareTo(b2) != 0);
       case ">" : return Boolean.valueOf(b1.compareTo(b2) == 1);
@@ -72,6 +73,8 @@ public class ASTbinaryOperation extends ASTexpression {
         case "!=" : return Boolean.valueOf(b1 != b2);
       }
     }
+
+    // int annulation ; Can be at any side
     else if ((op1 instanceof Boolean && op2 instanceof BigInteger) ||
     (op1 instanceof BigInteger && op2 instanceof Boolean)) {
       Boolean opBool;
@@ -84,46 +87,67 @@ public class ASTbinaryOperation extends ASTexpression {
         opBool = (Boolean) op2;
         opInt = (BigInteger) op1;
       }
-      switch (operator) {
-        case "*": return opBool ? opInt : BigInteger.ZERO;
+      if (operator.equals("*"))
+        return opBool ? opInt : BigInteger.ZERO;
+    }
+
+    // string annulation ; Can be at any side
+    else if ((op1 instanceof Boolean && op2 instanceof String) ||
+    (op1 instanceof String && op2 instanceof Boolean)) {
+      Boolean opBool;
+      String opStr;
+      if (op1 instanceof Boolean) {
+        opBool = (Boolean) op1;
+        opStr = (String) op2;
       }
+      else {
+        opBool = (Boolean) op2;
+        opStr = (String) op1;
+      }
+      if (operator.equals("*"))
+        return opBool ? opStr : "";
     }
 
     // STRINGS
 
-    else if (((op1 instanceof String || op1 instanceof ASTstr) && op2 instanceof BigInteger) ||
-      ((op2 instanceof String || op2 instanceof ASTstr) && op1 instanceof BigInteger)) {
+    // String duplication, integer can be at any side
+    else if ((op1 instanceof String && op2 instanceof BigInteger) ||
+      (op2 instanceof String && op1 instanceof BigInteger)) {
       String opStr;
       BigInteger opInt;
-      if (op1 instanceof ASTstr || op1 instanceof String) {
-        opStr = (String) op1;
+      if (op1 instanceof String) {
+        opStr = op1.toString();
         opInt = (BigInteger) op2;
       }
       else {
-        opStr = (String) op2;
+        opStr = op2.toString();
         opInt = (BigInteger) op1;
       }
       switch (operator) {
         case "*":
-          String s=""; 
-          for (int i=0;i < opInt.intValue();i++){ s+=opStr;}
-          return new ASTstr(s);
+          String s = ""; 
+          for (int i=0; i < opInt.intValue(); i++) {
+            s+=opStr;
+          }
+          return s;
       }
     }
-    // We can concatenate strings with anyting, so any String or ASTstr in the binary operation will do
-    else if (op1 instanceof ASTstr || op2 instanceof ASTstr || op1 instanceof String || op2 instanceof String) {
+    
+    // Other operations with string can be done with anyting, so any String in the binary operation will do
+    if (op1 instanceof String || op2 instanceof String) {
 
       // If the operator is an expression, it evaluates it, otherwise it directly converts it to a string
-      String s1 = (op1 instanceof ASTexpression) ? ((ASTexpression) op1).eval().toString() : op1.toString();
-      String s2 = (op2 instanceof ASTexpression) ? ((ASTexpression) op2).eval().toString() : op2.toString();
+      String s1 = op1.toString();
+      String s2 = op2.toString();
 
       switch (operator) {
-        case "+": return new ASTstr(s1 + s2);
+        case "+": return s1 + s2;
         case "-":
-          if (s1.endsWith(s2)) {
-            return new ASTstr(s1.substring(0, s1.length() - s2.length()));
-          }
-      
+          if (s1.endsWith(s2))
+            return s1.substring(0, s1.length() - s2.length());
+          return s1;
+        case "==": return s1.equals(s2);
+        case "!=": return !s1.equals(s2);
       }
     }
 

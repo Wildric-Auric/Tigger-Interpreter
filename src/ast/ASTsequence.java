@@ -22,12 +22,13 @@ public class ASTsequence extends ASTexpression {
   }
 
   public Object eval() {
-
+    
+    Memory.pushScope();
     Object lastVal = null;
-    for (ASTexpression expr : exprs) {
+    for (ASTexpression expr : exprs)
       lastVal = expr.eval();
-    }
-    Memory.popScope();  
+
+    Memory.popScope();
     return lastVal;
   }
 }

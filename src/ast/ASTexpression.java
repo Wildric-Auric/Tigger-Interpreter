@@ -15,7 +15,7 @@ public abstract class ASTexpression{
         b = (Boolean) condEval;
     }
     else if (condEval instanceof BigInteger) {
-        b = ((BigInteger) condEval).intValue() == 0;
+        b = ((BigInteger) condEval).intValue() > 0;
     }
     else {
         throw new ExpressionException("Invalid condition '" + condEval + "'");

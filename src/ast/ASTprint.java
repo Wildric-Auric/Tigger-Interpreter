@@ -16,9 +16,10 @@ public class ASTprint extends ASTexpression {
       return "$" + expr.toString();
     }
   
-    public Object eval(){
-      System.out.println(expr.toString() + " => " + this.expr.eval());
-      return expr.eval();
+    public Object eval() {
+      Object eval = expr.eval();
+      System.out.println(expr.toString() + " => " + eval);
+      return eval;
     }
   
 }

@@ -1,1 +1,1 @@
-if false then $5
+if 4 > 1 then $5

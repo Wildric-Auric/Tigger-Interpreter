@@ -1,2 +1,7 @@
-a = "ABC" == "ABC";
+{
+s = "ABC"
+a = s != "ABC";
+b = s == "ABC";
 $a;
+$b;
+}

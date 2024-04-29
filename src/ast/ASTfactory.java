@@ -27,8 +27,8 @@ public class ASTfactory {
 
   // New
 
-  public ASTgroupedExpression newGroupedExpression(ASTexpression expr) {
-    return new ASTgroupedExpression(expr);
+  public ASTgroupedExpression newGroupedExpression(ASTexpression expr, String expType) {
+    return new ASTgroupedExpression(expr, expType);
   }
 
   public ASTbool newBoolConstant(String value) {
@@ -55,12 +55,12 @@ public class ASTfactory {
     return new ASTloop(cond, task);
   }
   
-  public ASTvariable newVariable(String id, ASTexpression expr) {
-    return new ASTvariable(id, expr);
+  public ASTassign newVariable(String id, ASTexpression expr) {
+    return new ASTassign(id, expr);
   }
 
-  public ASTvariable newRead(String id) {
-    return Memory.getVar(id);
+  public ASTread newRead(String id) {
+    return new ASTread(id);
   }
   
   public ASTexpression[] toExpressions(List<TiggrammarParser.ExprContext> ctxs) {

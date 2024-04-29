@@ -1,1 +1,4 @@
-"ABCDEF" - "DEF"
+{
+s = "ABC99DEF" - "DEF";
+s - 99;
+}

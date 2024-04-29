@@ -1,7 +1,5 @@
 package ast;
 
-import frontend.ExpressionException;
-
 public class ASTloop extends ASTexpression {
 
     private ASTexpression cond;

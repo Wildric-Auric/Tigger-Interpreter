@@ -63,7 +63,8 @@ public class TigListener implements TiggrammarListener {
 
 	@Override
 	public void exitGroupedExpr(TiggrammarParser.GroupedExprContext ctx) {
-		ctx.node = factory.newGroupedExpression(ctx.arg.node);
+		ctx.node = factory.newGroupedExpression(ctx.arg.node,
+			ctx.expType == null ? null : ctx.expType.getText());
 	}
 
 	@Override
@@ -99,16 +100,7 @@ public class TigListener implements TiggrammarListener {
 
 	@Override
 	public void exitAssign(TiggrammarParser.AssignContext ctx) {
-		//Ouss.if var exists we read instead of creating it.
-		String varName = ctx.identifier.getText();
-		if (Memory.hasVar(null)) {
-			ASTvariable v = Memory.getVar(varName);
-			v.setValue(ctx.value.node);
-			ctx.node = v;
-			return;
-		}
-		//Else we create a new var
-		ctx.node = factory.newVariable(varName, ctx.value.node);
+		ctx.node = factory.newVariable(ctx.identifier.getText(), ctx.value.node);
 	}
 
 	@Override 
@@ -130,7 +122,7 @@ public class TigListener implements TiggrammarListener {
 	@Override	public void enterConstBool(TiggrammarParser.ConstBoolContext ctx) {}
 	@Override	public void enterConstStr(TiggrammarParser.ConstStrContext ctx) {}
 	@Override	public void enterPrint(TiggrammarParser.PrintContext ctx) {}
-	@Override	public void enterSequence(TiggrammarParser.SequenceContext ctx) { Memory.pushScope();}
+	@Override	public void enterSequence(TiggrammarParser.SequenceContext ctx) {}
 	@Override	public void enterCondition(TiggrammarParser.ConditionContext ctx) {}
 	@Override	public void enterWhile(TiggrammarParser.WhileContext ctx) {}
 	@Override   public void enterAssign(TiggrammarParser.AssignContext ctx) {}

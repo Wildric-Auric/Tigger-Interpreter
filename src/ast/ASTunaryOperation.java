@@ -21,11 +21,11 @@ public class ASTunaryOperation extends ASTexpression {
     return operator;
   }
 
- public String toString(){
+ public String toString() {
     return operator + operand.toString();
  }
 
-  public Object eval(){
+  public Object eval() {
 
     Object op = operand.eval();
 

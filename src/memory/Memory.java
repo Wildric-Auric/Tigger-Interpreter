@@ -1,45 +1,45 @@
 package memory;
 
-import ast.ASTvariable;
 import frontend.VariableException;
 
 import java.util.HashMap;
 import java.util.Stack;
 
-
 public class Memory {
-    public static Stack< HashMap<String, ASTvariable> >  data = new Stack<HashMap<String,ASTvariable>>();    //Ouss. Bad memory, too much cache issue, but it is java lol
-    private static HashMap<String, ASTvariable>           cache= new HashMap<String,ASTvariable>();           //Ouss. To  access variable in constant time
+    private static Stack< HashMap<String, Object> >  data = new Stack<HashMap<String,Object>>();    //Ouss. Bad memory, too much cache issue, but it is java lol
 
-    public static void pushScope() {
-        data.push(new HashMap<String,ASTvariable>()); 
+    public static void init() {
+        //Ouss.Initialize main scope
+        data.push(new HashMap<String,Object>());
     }
 
-    public static void Init() {
-        //Ouss.Initialize main scope
-        data.push(new HashMap<String,ASTvariable>());
+    public static void pushScope() {
+        data.push(new HashMap<String,Object>()); 
     }
 
     public static void popScope() {
-        HashMap<String, ASTvariable> h = data.pop();
-        for (HashMap.Entry<String, ASTvariable> entry : h.entrySet()) {
-            cache.remove(entry.getKey());
+        data.pop();
+    }
+
+    public static void pushVar(String id, Object value) {
+
+        for (HashMap<String, Object> scope : data) {
+            Object val = scope.get(id);
+            if (val != null) {
+                scope.put(id, value);
+                return;
+            }
         }
+        data.peek().put(id, value);
     }
 
-    public static void pushVar(ASTvariable value) {
-        data.peek().put(value.getID(),value);
-        cache.put(value.getID(),value);
-    }
+    public static Object getVar(String id) {
 
-    public static boolean hasVar(String id) {
-        return cache.get(id) != null;
-    }
-
-    public static ASTvariable getVar(String id) {
-        Object var = cache.get(id);
-        if (var == null)
-            throw new VariableException("Unknown variable : " + id);
-        return cache.get(id);
+        for (HashMap<String, Object> scope : data) {
+            Object val = scope.get(id);
+            if (val != null)
+                return val;
+        }
+        throw new VariableException("Unknown variable : " + id);
     }
 }
