@@ -100,7 +100,7 @@ public class TigListener implements TiggrammarListener {
 
 	@Override
 	public void exitAssign(TiggrammarParser.AssignContext ctx) {
-		ctx.node = factory.newVariable(ctx.identifier.getText(), ctx.value.node);
+		ctx.node = factory.newAssign(ctx.identifier.getText(), ctx.value.node);
 	}
 
 	@Override 
@@ -108,6 +108,33 @@ public class TigListener implements TiggrammarListener {
 		ctx.node = factory.newRead(ctx.identifier.getText());
 	}
 
+	@Override
+	public void exitFor(TiggrammarParser.ForContext ctx) { // Lots of sugar
+
+		String id = ctx.var.getText();
+
+		ASTexpression exprInit;
+		// If there's no affectation, we take 0 by default
+		exprInit = ctx.init == null ? factory.newIntegerConstant("0") : ctx.init.node;
+
+		ASTexpression exprGoal = ctx.goal.node;
+		ASTexpression exprTask = ctx.task.node;
+		
+		// In-loop nodes construct (incrementation)
+		ASTbinaryOperation increment = factory.newBinaryOperation("+", factory.newRead(id), factory.newIntegerConstant("1"));
+		ASTassign assignIncrement = factory.newAssign(id, increment);
+		ASTexpression[] exprsLoop = {exprTask, assignIncrement};
+		ASTsequence loopSeq = factory.newSequence(exprsLoop);
+
+		// Out-loop nodes construct (assignment and condition)
+		ASTassign assign = factory.newAssign(id, exprInit);
+		ASTbinaryOperation cond = factory.newBinaryOperation("<=", factory.newRead(id), exprGoal);
+		ASTloop loop = factory.newLoop(cond, loopSeq);
+		ASTexpression[] exprsOut = {assign, loop};
+		ASTsequence outSeq = factory.newSequence(exprsOut);
+
+		ctx.node = outSeq;
+	}
 
 	@Override	public void enterEveryRule(ParserRuleContext arg0) {}
 	@Override	public void exitEveryRule(ParserRuleContext arg0) {}
@@ -127,4 +154,5 @@ public class TigListener implements TiggrammarListener {
 	@Override	public void enterWhile(TiggrammarParser.WhileContext ctx) {}
 	@Override   public void enterAssign(TiggrammarParser.AssignContext ctx) {}
 	@Override   public void enterRead(TiggrammarParser.ReadContext ctx) {}
+	@Override   public void enterFor(TiggrammarParser.ForContext ctx) {}
 }

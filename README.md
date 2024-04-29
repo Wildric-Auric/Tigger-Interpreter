@@ -123,10 +123,29 @@ while a do {
 ```
 Les règles spécifiques sont similaires au `if`.
 
+## Boucle for
+Les boucles for sont du pur sucre syntaxique sur les boucles while.
+La variable utilisée pour l'incrémentation n'existe que au scope du contenu de la boucle.
+Le mot-clé `to` indique à la variable d'incrémenter jusqu'à cette valeur **inclue**.
+Ex :
+```
+for i = 30 to 35 do {
+    $i
+}
+```
+Pour afficher les nombres de 30 à 35 inclus.
+La boucle for fonctionne également sans avoir à explicitement écrire l'affectation, la variable sera alors assignée à 0 par défaut.
+Ex :
+```
+for i to 20 do {
+    $i
+}
+```
+
 Séquences et variables
 =========
 
-Les séquences d'expressions sont toujours encadrées par des accolades `{` `}` et les expressions sont séparées par des point-virgule.
+Les séquences d'expressions sont toujours encadrées par des accolades `{` `}` (même le sommet du programme) et les expressions sont séparées par des point-virgule.
 Les séquences retournent la dernière variable affectée.
 
 Les affectations se font via l'opérateur `=` de manière similaire au Python et retournent elle-même la valeur affectée.

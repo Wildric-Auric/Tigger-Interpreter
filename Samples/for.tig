@@ -1,0 +1,8 @@
+{
+    for i = 30 to 35 do {
+        $i
+    }
+    for i to 20 do {
+        $i
+    }
+}

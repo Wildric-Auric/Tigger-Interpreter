@@ -15,6 +15,7 @@ expr returns [ast.ASTexpression node]
 
     | 'if' cond=expr 'then' argT=expr ('else' argF=expr)? # Condition
     | 'while' cond=expr 'do' task=expr # While
+    | 'for' var=ID ('=' init=expr)? 'to' goal=expr 'do' task=expr # For
 
     | op=('-' | '+' | '!') arg=expr # Unary
     | expType=TYPE? '(' arg=expr ')' # GroupedExpr

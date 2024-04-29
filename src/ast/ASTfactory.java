@@ -55,7 +55,7 @@ public class ASTfactory {
     return new ASTloop(cond, task);
   }
   
-  public ASTassign newVariable(String id, ASTexpression expr) {
+  public ASTassign newAssign(String id, ASTexpression expr) {
     return new ASTassign(id, expr);
   }
 
